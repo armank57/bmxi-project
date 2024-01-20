@@ -85,4 +85,28 @@ function windowResized() {
     if (keyCode == 27 && pause != 1) {
       pause = 1;
     }
+    if (keyCode == 37 && pause != 1) {
+      move_left(debugHostSelectedPlayer);
+    }
+    if (keyCode == 38 && pause != 1) {
+      move_up(debugHostSelectedPlayer);
+    }
+    if (keyCode == 39 && pause != 1) {
+      move_right(debugHostSelectedPlayer);
+    }
+    if (keyCode == 40 && pause != 1) {
+      move_down(debugHostSelectedPlayer);
+    }
+    if (keyCode == 49 && pause != 1) {
+      debugHostSelectedPlayer = 0;
+    }
+    if (keyCode == 50 && pause != 1) {
+      debugHostSelectedPlayer = 1;
+    }
+    if (keyCode == 51 && pause != 1) {
+      debugHostSelectedPlayer = 2;
+    }
+    if (keyCode == 52 && pause != 1) {
+      debugHostSelectedPlayer = 3;
+    }
   }

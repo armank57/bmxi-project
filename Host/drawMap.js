@@ -6,28 +6,54 @@ function draw_map(w, h) {
         for (col = 0; col < mapSize; col++) {
             if (textures[row][col] == 0) {
                 rectMode(CORNER);
-                fill("#121212");
-                if (players[0].x == col && players[0].y == row) {
-                    fill("#AA1212");
-                }
-                if (players[1].x == col && players[1].y == row) {
-                    fill("#AA12AA");
-                }
-                if (players[2].x == col && players[2].y == row) {
-                    fill("#1212AA");
-                }
-                else if (players[3].x == col && players[3].y == row) {
-                    fill("#12AA12");
-                }
-                else {
-                    stroke("#454545");
-                }
+                fill("#CCCCCC");
+                stroke("#121212");
                 rect(w*col/mapSize, h*row/mapSize, w/mapSize, h/mapSize);
                 fill("#FFFFFF");
                 stroke("#000000");
             }
         }
     }
+    //draw selected players:
+    noFill();
+    strokeWeight(3);
+    stroke("rgba(200,12,12, 1)");
+    rect(w * players[0].x/mapSize, h * players[0].y/mapSize, w/mapSize, h/mapSize);
+    stroke("rgba(12,100,12,1)");
+    rect(w * players[1].x/mapSize, h * players[1].y/mapSize, w/mapSize, h/mapSize);
+    stroke("rgba(200,12,200,1)");
+    rect(w * players[2].x/mapSize, h * players[2].y/mapSize, w/mapSize, h/mapSize);
+    stroke("rgba(12,12,200,1)");
+    rect(w * players[3].x/mapSize, h * players[3].y/mapSize, w/mapSize, h/mapSize);
+    strokeWeight(3);
+    stroke("rgba(200,12,12,0.65)");
+    rect(w * players[0].x/mapSize, h * players[0].y/mapSize, w/mapSize, h/mapSize);
+    stroke("rgba(12,100,12,0.65)");
+    rect(w * players[1].x/mapSize, h * players[1].y/mapSize, w/mapSize, h/mapSize);
+    stroke("rgba(200,12,200,0.65)");
+    rect(w * players[2].x/mapSize, h * players[2].y/mapSize, w/mapSize, h/mapSize);
+    stroke("rgba(12,12,200,0.65)");
+    rect(w * players[3].x/mapSize, h * players[3].y/mapSize, w/mapSize, h/mapSize);
+    strokeWeight(7);
+    stroke("rgba(200,12,12,0.5)");
+    rect(w * players[0].x/mapSize, h * players[0].y/mapSize, w/mapSize, h/mapSize);
+    stroke("rgba(12,100,12,0.5)");
+    rect(w * players[1].x/mapSize, h * players[1].y/mapSize, w/mapSize, h/mapSize);
+    stroke("rgba(200,12,200,0.5)");
+    rect(w * players[2].x/mapSize, h * players[2].y/mapSize, w/mapSize, h/mapSize);
+    stroke("rgba(12,12,200,0.5)");
+    rect(w * players[3].x/mapSize, h * players[3].y/mapSize, w/mapSize, h/mapSize);
+    strokeWeight(10);
+    stroke("rgba(200,12,12,0.25)");
+    rect(w * players[0].x/mapSize, h * players[0].y/mapSize, w/mapSize, h/mapSize);
+    stroke("rgba(12,100,12,0.25)");
+    rect(w * players[1].x/mapSize, h * players[1].y/mapSize, w/mapSize, h/mapSize);
+    stroke("rgba(200,12,200,0.25)");
+    rect(w * players[2].x/mapSize, h * players[2].y/mapSize, w/mapSize, h/mapSize);
+    stroke("rgba(12,12,200,0.25)");
+    rect(w * players[3].x/mapSize, h * players[3].y/mapSize, w/mapSize, h/mapSize);
+    strokeWeight(1);
+
 }
 
 function generate_map() {
