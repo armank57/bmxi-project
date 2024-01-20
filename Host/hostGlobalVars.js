@@ -1,10 +1,16 @@
-let mapSize = 17;
+let mapSize = 25;
 let playerCount = 4;
+let islandSize = 7;
+let centerSize = 2; //half of size
 let textures = Array(mapSize).fill(null).map(()=>Array(mapSize).fill(0));
 let ownership = Array(mapSize).fill(null).map(()=>Array(mapSize).fill(0));
 let players = Array(playerCount).fill(Player);
 let m = Array(playerCount).fill(2000);
 let debugHostSelectedPlayer = 0;
+
+let buildOneCost = 100;
+let buildTwoCost = 200;
+let buildThreeCost = 300;
 
 function init() {
     players[0] = new Player(0, int(mapSize/2), 1);
