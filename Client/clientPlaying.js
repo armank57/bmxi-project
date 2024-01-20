@@ -19,7 +19,7 @@ function updateContainer() {
     btnRadius = h/40;
     btnDist = h/3.5;
   }
-  btnSpace = btnDist - moveBtnSize;
+  btnSpace = moveBtnSize/2;
   btnEdge = btnDist - moveBtnSize/2;
 }
 
@@ -80,48 +80,49 @@ function windowResized() {
 
   function mouseClicked() {
     if (selectionMode == 1) {
+      halfBtn = moveBtnSize/2;
         if (mouseX > w/2 - btnSpace && mouseX < w/2 + btnSpace 
                 && mouseY > h/2 - btnSpace && mouseY < h/2 + btnSpace) {
             //center button
             console.log("Center");
         }
-        if (mouseX > w/2 - btnSpace + 1.5 *moveBtnSize && mouseX < w/2 + btnSpace + 1.5 *moveBtnSize 
+        if (mouseX > w/2 - btnSpace + btnDist && mouseX < w/2 + btnSpace + btnDist 
                 && mouseY > h/2 - btnSpace && mouseY < h/2 + btnSpace) {
             //right button
             console.log("Right");
         }
-        if (mouseX > w/2 - btnSpace - 1.5 *moveBtnSize && mouseX < w/2 + btnSpace - 1.5 *moveBtnSize 
+        if (mouseX > w/2 - btnSpace - btnDist && mouseX < w/2 + btnSpace - btnDist 
                 && mouseY > h/2 - btnSpace && mouseY < h/2 + btnSpace) {
             //left button
             console.log("Left");
         }
         if (mouseX > w/2 - btnSpace && mouseX < w/2 + btnSpace 
-                && mouseY > h/2 - btnSpace - 1.5 *moveBtnSize && mouseY < h/2 + btnSpace - 1.5 *moveBtnSize) {
+                && mouseY > h/2 - btnSpace - btnDist && mouseY < h/2 + btnSpace - btnDist) {
             //top button
             console.log("Top");
         }
         if (mouseX > w/2 - btnSpace && mouseX < w/2 + btnSpace 
-                && mouseY > h/2 - btnSpace + 1.5 *moveBtnSize && mouseY < h/2 + btnSpace + 1.5 *moveBtnSize) {
+                && mouseY > h/2 - btnSpace + btnDist && mouseY < h/2 + btnSpace + btnDist) {
             //bottom button
             console.log("Bottom");
         }
-        if (mouseX > w/2 - btnSpace - 1.5 *moveBtnSize && mouseX < w/2 + btnSpace - 1.5 *moveBtnSize 
-                && mouseY > h/2 - btnSpace - 1.5 *moveBtnSize && mouseY < h/2 + btnSpace - 1.5 *moveBtnSize) {
+        if (mouseX > w/2 - btnSpace - btnDist && mouseX < w/2 + btnSpace - btnDist 
+                && mouseY > h/2 - btnSpace - btnDist && mouseY < h/2 + btnSpace - btnDist) {
             //top left button
             console.log("Top left");
         }
-        if (mouseX > w/2 - btnSpace + 1.5 *moveBtnSize && mouseX < w/2 + btnSpace + 1.5 *moveBtnSize 
-                && mouseY > h/2 - btnSpace - 1.5 *moveBtnSize && mouseY < h/2 + btnSpace - 1.5 *moveBtnSize) {
+        if (mouseX > w/2 - btnSpace + btnDist && mouseX < w/2 + btnSpace + btnDist 
+                && mouseY > h/2 - btnSpace - btnDist && mouseY < h/2 + btnSpace - btnDist) {
             //top right button
             console.log("Top right");
         }
-        if (mouseX > w/2 - btnSpace + 1.5 *moveBtnSize && mouseX < w/2 + btnSpace + 1.5 *moveBtnSize 
-                && mouseY > h/2 - btnSpace + 1.5 *moveBtnSize && mouseY < h/2 + btnSpace + 1.5 *moveBtnSize) {
+        if (mouseX > w/2 - btnSpace + btnDist && mouseX < w/2 + btnSpace + btnDist 
+                && mouseY > h/2 - btnSpace + btnDist && mouseY < h/2 + btnSpace + btnDist) {
             //bottom right button
             console.log("Bottom right");
         }
-        if (mouseX > w/2 - btnSpace - 1.5 *moveBtnSize && mouseX < w/2 + btnSpace - 1.5 *moveBtnSize 
-                && mouseY > h/2 - btnSpace + 1.5 *moveBtnSize && mouseY < h/2 + btnSpace + 1.5 *moveBtnSize) {
+        if (mouseX > w/2 - btnSpace - btnDist && mouseX < w/2 + btnSpace - btnDist 
+                && mouseY > h/2 - btnSpace + btnDist && mouseY < h/2 + btnSpace + btnDist) {
             //bottom left button
             console.log("Bottom left");
         }

@@ -1,3 +1,4 @@
+//CLIENT START
 function updateContainer() {
     container = select('#sketchContainer');
   w = parseFloat(getComputedStyle(container.elt).getPropertyValue('width'));
