@@ -465,7 +465,7 @@ function checkDistance() {
 
 
 
-    //if player 2 attacks player 1 with range 0
+    //if player 2 attacks player 3 with range 0
     if (Math.abs(p2position - p3position) = (0, 0)) {
 
 
@@ -582,7 +582,7 @@ function checkDistance() {
         return false;
     }
 
-    
+
     // vs PLAYER FOUR
 
     if (Math.abs(p2position - p4position) >= (2, 0) | (0, 2) | (2, 2)) {
@@ -680,6 +680,530 @@ function checkDistance() {
 
         return false;
     }
+
+    // PLAYER THREE...
+
+    // vs PLAYER ONE
+
+    if (Math.abs(p3position - p1position) >= (2, 0) | (0, 2) | (2, 2)) {
+        //this returns false no matter what if user is too far
+        return false;
+    }
+
+
+    //if player 2 attacks player 1 with range 0
+    if (Math.abs(p3position - p1position) = (0, 0)) {
+
+
+        if (attack) {
+            if (p3fp > p1fp) {
+                p3fp = p3fp - p1fp;
+                p1fp = p1fp - p1fp;
+
+
+
+
+
+
+
+
+                players[0].x = int(mapSize / 2);
+                players[0].y = 1;
+            } else if (p1fp > p3fp) {
+                p1fp = p1fp - p3fp;
+                p3fp = p3fp - p3fp;
+
+
+
+
+
+
+
+
+                players[2].x = int(mapSize / 2);
+                players[2].y = mapSize - 2;
+
+
+
+
+
+
+
+
+                players[2].money = players[2].money - 10000000;
+            } else {
+                p3fp = 0;
+                p1fp = 0;
+
+
+
+
+
+
+
+
+                players[2].x = int(mapSize / 2);
+                players[2].y = mapSize - 2;
+
+
+
+
+
+
+
+
+                players[0].x = int(mapSize / 2);
+                players[0].y = 1;
+            }
+        }
+
+
+
+
+
+
+
+
+        return false;
+    }
+
+
+
+
+
+
+
+
+    if (Math.abs(p3position - p1position) <= (1, 0) || (0, 1) || (1, 1)) {
+        // if the player has range 1
+        if (p3range == 0) {
+            return false;
+        }
+
+
+
+
+
+
+
+
+        if (attack) {
+            if (p3fp < p1fp) { // p3 wins
+                p3fp = p3fp - p1fp;
+                p1fp = p1fp - p1fp;
+
+
+
+
+
+
+
+
+                players[0].x = int(mapSize / 2);
+                players[0].y = 1;
+            } else if (p1fp > p3fp) { // p1 wins
+                p1fp = p1fp - p1fp;
+                p3fp = p3fp - p3fp;
+
+
+
+
+
+
+
+
+                players[2].x = int(mapSize / 2);
+                players[2].y = mapSize - 2;
+            } else { // tie
+                p3fp = 0;
+                p1fp = 0;
+
+
+
+
+
+
+
+
+                players[2].x = int(mapSize / 2);
+                players[2].y = mapSize - 2;
+
+
+
+
+
+
+
+
+                players[0].x = int(mapSize / 2);
+                players[0].y = 1;
+            }
+        }
+        return false;
+    }
+    if (Math.abs(p3position - p1position) <= (2, 0) | (0, 2) | (2, 2)) {
+        // if the player has range 2
+        if (p3range == 0) {
+            return false;
+        }
+        if (p3range == 1) {
+            return false;
+        }
+
+
+
+
+        return false;
+    }
+
+
+
+
+
+    // vs PLAYER TWO
+
+    if (Math.abs(p3position - p2position) >= (2, 0) | (0, 2) | (2, 2)) {
+        //this returns false no matter what if user is too far
+        return false;
+    }
+
+
+    //if player 2 attacks player 1 with range 0
+    if (Math.abs(p3position - p2position) = (0, 0)) {
+
+
+        if (attack) {
+            if (p3fp > p2fp) {
+                p3fp = p3fp - p2fp;
+                p2fp = p2fp - p2fp;
+
+
+
+
+
+
+
+
+                players[1].x = 1;
+                players[1].y = int(mapSize / 2);
+            } else if (p2fp > p3fp) {
+                p2fp = p2fp - p3fp;
+                p3fp = p3fp - p3fp;
+
+
+
+
+
+
+
+
+                players[2].x = int(mapSize / 2);
+                players[2].y = mapSize - 2;
+
+
+
+
+
+
+
+
+                players[2].money = players[2].money - 10000000;
+            } else {
+                p3fp = 0;
+                p2fp = 0;
+
+
+
+
+
+
+
+
+                players[2].x = int(mapSize / 2);
+                players[2].y = mapSize - 2;
+
+
+
+
+
+
+
+
+                players[1].x = 1;
+                players[1].y = int(mapSize / 2);
+            }
+        }
+
+
+
+
+
+
+
+
+        return false;
+    }
+
+
+
+
+
+
+
+
+    if (Math.abs(p3position - p2position) <= (1, 0) || (0, 1) || (1, 1)) {
+        // if the player has range 1
+        if (p3range == 0) {
+            return false;
+        }
+
+
+
+
+
+
+
+
+        if (attack) {
+            if (p3fp < p2fp) { // p3 wins
+                p3fp = p3fp - p2fp;
+                p2fp = p2fp - p2fp;
+
+
+
+
+
+
+
+
+                players[1].x = 1;
+                players[1].y = int(mapSize / 2);
+            } else if (p2fp > p3fp) { // p2 wins
+                p2fp = p2fp - p2fp;
+                p3fp = p3fp - p3fp;
+
+
+
+
+
+
+
+
+                players[2].x = int(mapSize / 2);
+                players[2].y = mapSize - 2;
+            } else { // tie
+                p3fp = 0;
+                p2fp = 0;
+
+
+
+
+
+
+
+
+                players[2].x = int(mapSize / 2);
+                players[2].y = mapSize - 2;
+
+
+
+
+
+
+
+
+                players[1].x = 1;
+                players[1].y = int(mapSize / 2);
+            }
+        }
+        return false;
+    }
+    if (Math.abs(p3position - p2position) <= (2, 0) | (0, 2) | (2, 2)) {
+        // if the player has range 2
+        if (p3range == 0) {
+            return false;
+        }
+        if (p3range == 1) {
+            return false;
+        }
+
+
+
+
+        return false;
+    }
+
+    // vs PLAYER FOUR
+
+    if (Math.abs(p3position - p4position) >= (2, 0) | (0, 2) | (2, 2)) {
+        //this returns false no matter what if user is too far
+        return false;
+    }
+
+
+    //if player 2 attacks player 1 with range 0
+    if (Math.abs(p3position - p4position) = (0, 0)) {
+
+
+        if (attack) {
+            if (p3fp > p4fp) {
+                p3fp = p3fp - p4fp;
+                p4fp = p4fp - p4fp;
+
+
+
+
+
+
+
+
+                players[4].x = mapSize - 2;
+                players[4].y = int(mapSize / 2);
+            } else if (p4fp > p3fp) {
+                p4fp = p4fp - p3fp;
+                p3fp = p3fp - p3fp;
+
+
+
+
+
+
+
+
+                players[2].x = int(mapSize / 2);
+                players[2].y = mapSize - 2;
+
+
+
+
+
+
+
+
+                players[2].money = players[2].money - 10000000;
+            } else {
+                p3fp = 0;
+                p4fp = 0;
+
+
+
+
+
+
+
+
+                players[2].x = int(mapSize / 2);
+                players[2].y = mapSize - 2;
+
+
+
+
+
+
+
+
+                players[4].x = mapSize - 2;
+                players[4].y = int(mapSize / 2);
+            }
+        }
+
+
+
+
+
+
+
+
+        return false;
+    }
+
+
+
+
+
+
+
+
+    if (Math.abs(p3position - p4position) <= (1, 0) || (0, 1) || (1, 1)) {
+        // if the player has range 1
+        if (p3range == 0) {
+            return false;
+        }
+
+
+
+
+
+
+
+
+        if (attack) {
+            if (p3fp < p4fp) { // p3 wins
+                p3fp = p3fp - p4fp;
+                p4fp = p4fp - p4fp;
+
+
+
+
+
+
+
+
+                players[4].x = mapSize - 2;
+                players[4].y = int(mapSize / 2);
+            } else if (p4fp > p3fp) { // p4 wins
+                p4fp = p4fp - p4fp;
+                p3fp = p3fp - p3fp;
+
+
+
+
+
+
+
+
+                players[2].x = int(mapSize / 2);
+                players[2].y = mapSize - 2;
+            } else { // tie
+                p3fp = 0;
+                p4fp = 0;
+
+
+
+
+
+
+
+
+                players[2].x = int(mapSize / 2);
+                players[2].y = mapSize - 2;
+
+
+
+
+
+
+
+
+                players[4].x = mapSize - 2;
+                players[4].y = int(mapSize / 2);
+            }
+        }
+        return false;
+    }
+    if (Math.abs(p3position - p4position) <= (2, 0) | (0, 2) | (2, 2)) {
+        // if the player has range 2
+        if (p3range == 0) {
+            return false;
+        }
+        if (p3range == 1) {
+            return false;
+        }
+
+        return false;
+    }
+
+
 
 }
 
