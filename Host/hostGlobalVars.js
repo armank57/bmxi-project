@@ -42,4 +42,17 @@ function Player(index, posX, posY) {
     this.x = posX;
     this.y = posY;
     this.index = index;
+    
+    this.fightingPower = 0
+    this.range = 0
+
+    this.money = 0
+    this.food = 0
+
+    this.wood = 0
+    this.stone = 0
+    this.iron = 0
+    this.wheat = 0
+    this.fish = 0
+    this.cattle = 0
 }
