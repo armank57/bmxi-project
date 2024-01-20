@@ -52,7 +52,7 @@ def message_recieved(data):
         else:
             emit('message_from_server', {'text': "E"}, to=sid)
         return
-    else if text == "newH":
+    elif text == "newH":
         if host == "":
             host = request.sid
             emit('message_from_server', {'text': "S"}, to=host)
@@ -64,7 +64,7 @@ def message_recieved(data):
         emit('message_from_server', {'text': text}, to=host)
         return
     }
-    else if text[0] == 'C' {
+    elif text[0] == 'C' {
         emit('message_from_server', {'text': text}, to=clients[text[1]])
     }
 
