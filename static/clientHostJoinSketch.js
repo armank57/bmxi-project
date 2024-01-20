@@ -27,8 +27,8 @@ function windowResized() {
     strokeWeight(1);
     textSize(30);
     textAlign("center", "center");
-    text("Join a room", w/2, btnHeight/2);
-    text("Create a room", w/2, btnHeight/2 + 2*btnHeight);
+    text("Host", w/2, btnHeight/2);
+    text("Player", w/2, btnHeight/2 + 2*btnHeight);
 
 
   }
@@ -36,7 +36,7 @@ function windowResized() {
   function mouseClicked() {
     btnHeight = 30;
     if (mouseX > 0 && mouseX < w && mouseY > 0 && mouseY < btnHeight) {
-        window.location = "clientLoading";
+        window.location = "hostPlaying";
     }
     if (mouseX > 0 && mouseX < w && mouseY > 2*btnHeight && mouseY < 3*btnHeight) {
         window.location = "clientPlaying";
