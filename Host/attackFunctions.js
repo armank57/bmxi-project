@@ -1,4 +1,4 @@
-function checkDistance() {
+function checkDistance(player, target) {
     // compare if fightingpower is greater than others
     p1fp = players[0].fightingPower = 0;
     p2fp = players[1].fightingPower = 0;
@@ -25,7 +25,10 @@ function checkDistance() {
     // PLAYER ONE...
 
     // vs PLAYER TWO
-
+if (player == 0) {
+    console.log("p1 attacking...");
+    if (target == 1) {
+    console.log("p2 being attacked...");
     if (Math.abs(p1position - p2position) >= (2, 0) | (0, 2) | (2, 2)) {
         //this returns false no matter what if user is too far
         return false;
@@ -58,6 +61,7 @@ function checkDistance() {
 
                 players[1].x = 1;
                 players[1].y = int(mapSize / 2);
+                players[0].money = 0;
             }
         }
 
@@ -112,7 +116,7 @@ function checkDistance() {
 
         return false;
     }
-
+    }
     // VS PLAYER THREE
 
 
@@ -218,7 +222,7 @@ function checkDistance() {
         return false;
     }
 
-    // VS PLAYER FOUR    
+    // vs PLAYER FOUR    
 
     if (Math.abs(p1position - p4position) >= (2, 0) | (0, 2) | (2, 2)) {
         //this returns false no matter what if user is too far
@@ -326,6 +330,7 @@ function checkDistance() {
 
         return false;
     }
+}
 
     // PLAYER TWO...
 

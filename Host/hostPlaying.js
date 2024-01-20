@@ -5,6 +5,7 @@
 
 let btnSize;
 let pause = 0;
+let attacking = 0;
 
 function updateContainer() {
     container = select('#sketchContainer');
@@ -90,6 +91,20 @@ function windowResized() {
     }
   }
   function keyPressed() {
+    if (attacking == 1) {
+      if (keyCode == 49 && pause != 1) {
+        target = 0;
+      } else if (keyCode == 50 && pause != 1) {
+        target = 1;
+      } else if (keyCode == 51 && pause != 1) {
+        target = 2;
+      } else if (keyCode == 52 && pause != 1) {
+        target = 3;
+      } else {
+        return;
+      }
+      checkDistance(debugHostSelectedPlayer, target);
+    }
     if (keyCode == 27 && pause != 1) {
       pause = 1;
     }
@@ -116,6 +131,9 @@ function windowResized() {
     }
     if (keyCode == 52 && pause != 1) {
       debugHostSelectedPlayer = 3;
+    }
+    if (keyCode == 65 && pause != 1) {
+      attacking = 1;
     }
     if (keyCode == 66 && pause != 1) {
       buy_building_one(debugHostSelectedPlayer);
