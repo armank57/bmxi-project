@@ -44,7 +44,6 @@ def connected():
 @socketio.on('send_message')   
 def message_recieved(data):
     print(data['text'])
-    print(clients)
     emit('message_from_server', {'text': data['text']}, to=clients[0])
 
 if __name__ == '__main__':
