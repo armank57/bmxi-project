@@ -37,9 +37,14 @@ function windowResized() {
   }
 
   function draw() {
+    rectMode(CORNER);
+    fill("#FFFFFF");
+    rect(1, 1, w-2, h-2);
     if (selectionMode == 1) {
+        drawPause();
         //Arrows drawing
         rectMode(CENTER);
+        fill("#FFFFFF");
         //center button
         rect(w/2, h/2, moveBtnSize, moveBtnSize, btnRadius);
         strokeWeight(10);
@@ -75,7 +80,36 @@ function windowResized() {
         rect(w/2 - btnDist, h/2 + btnDist, moveBtnSize, moveBtnSize, btnRadius);
         rect(w/2 + btnDist, h/2 - btnDist, moveBtnSize, moveBtnSize, btnRadius);
         rect(w/2 - btnDist, h/2 - btnDist, moveBtnSize, moveBtnSize, btnRadius);
+    } else if (selectionMode == -1) {
+      //paused
+      pauseScreen();
     }
+  }
+
+  function drawPause() {
+    rectMode(CORNER);
+    fill('#FFFFFF');
+    rect(1, 1, w/10, h/10);
+    fill('#121212');
+    strokeWeight(1);
+    textSize(30);
+    textAlign("center", "center");
+    text("Pause", 1, 1, w/10, h/10);
+  }
+  function pauseScreen() {
+    fill('#FFFFFF');
+    rectMode(CENTER);
+    rect(w/6, h/2, w/4, h/5);
+    rect(w/2, h/2, w/4, h/5);
+    rect(w* 5/6, h/2, w/4, h/5);
+    fill('#121212');
+    strokeWeight(1);
+    textSize(30);
+    textAlign("center", "center");
+    text("Resume", w/6, h/2, w/4, h/5);
+    text("Settings", w/2, h/2, w/4, h/5);
+    text("Quit", w* 5/6, h/2, w/4, h/5);
+    rectMode(CORNER);
   }
 
   function mouseClicked() {
@@ -126,5 +160,15 @@ function windowResized() {
             //bottom left button
             console.log("Bottom left");
         }
+        if (mouseX > 1 && mouseX < w/10 && mouseY > 1 && mouseY < h/10) {
+          selectionMode = -1;
+        }
+    } else if (selectionMode == -1) {
+      if (mouseX > w/6 - w/8 && mouseX < w/6 + w/8 && mouseY > h/2 - h/10 && mouseY < h/2 + h/10) {
+        selectionMode = 1;
+      }
+      if (mouseX > w*5/6 - w/8 && mouseX < w*5/6 + w/8 && mouseY > h/2 - h/10 && mouseY < h/2 + h/10) {
+        window.location = "clientHostJoin.html";
+      }
     }
   }
