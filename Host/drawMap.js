@@ -115,14 +115,36 @@ function draw_map(w, h) {
 }
 
 function generate_map() {
-    for (let i = 0; i < 3; i++) {
-        textures[mapSize-1-i][5] = -1;
-        textures[mapSize-1-i][11] = -1;
-        textures[i][5] = -1;
-        textures[i][11] = -1;
-        textures[5][mapSize-1-i] = -1;
-        textures[11][mapSize-1-i] = -1;
-        textures[5][i] = -1;
-        textures[11][i] = -1;
+    //corners
+    for (let i = 0; i < islandSize+1; i++) {
+        textures[mapSize-1-i][islandSize] = -1;
+        textures[mapSize-1-i][mapSize-1-islandSize] = -1;
+        textures[i][islandSize] = -1;
+        textures[i][mapSize-1-islandSize] = -1;
+        textures[islandSize][mapSize-1-i] = -1;
+        textures[mapSize-1-islandSize][mapSize-1-i] = -1;
+        textures[islandSize][i] = -1;
+        textures[mapSize-1-islandSize][i] = -1;
+    }
+    for (let i = 0; i < islandSize+2; i++) {
+        textures[mapSize-1-i][islandSize+1] = -1;
+        textures[mapSize-1-i][mapSize-2-islandSize] = -1;
+        textures[i][islandSize+1] = -1;
+        textures[i][mapSize-2-islandSize] = -1;
+        textures[islandSize+1][mapSize-1-i] = -1;
+        textures[mapSize-2-islandSize][mapSize-1-i] = -1;
+        textures[islandSize+1][i] = -1;
+        textures[mapSize-2-islandSize][i] = -1;
+    }
+    for (let i = 0; i <= centerSize; i++) {
+        ms = int(mapSize/2);
+        textures[ms+i][ms+centerSize] = -1;
+        textures[ms-i][ms+centerSize] = -1;
+        textures[ms+i][ms-centerSize] = -1;
+        textures[ms-i][ms-centerSize] = -1;
+        textures[ms-centerSize][ms-i] = -1;
+        textures[ms+centerSize][ms-i] = -1;
+        textures[ms-centerSize][ms+i] = -1;
+        textures[ms+centerSize][ms+i] = -1;
     }
 }

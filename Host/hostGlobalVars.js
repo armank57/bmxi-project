@@ -1,5 +1,7 @@
-let mapSize = 17;
+let mapSize = 25;
 let playerCount = 4;
+let islandSize = 7;
+let centerSize = 2; //half of size
 let textures = Array(mapSize).fill(null).map(()=>Array(mapSize).fill(0));
 let ownership = Array(mapSize).fill(null).map(()=>Array(mapSize).fill(0));
 let players = Array(playerCount).fill(Player);
