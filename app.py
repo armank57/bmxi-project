@@ -60,13 +60,12 @@ def message_recieved(data):
             emit('message_from_server', {'text': "E"}, to=host)
         return
 
-    if text[0] == 'H' {
+    if text[0] == 'H':
         emit('message_from_server', {'text': text}, to=host)
         return
-    }
-    elif text[0] == 'C' {
+
+    elif text[0] == 'C':
         emit('message_from_server', {'text': text}, to=clients[text[1]])
-    }
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)
