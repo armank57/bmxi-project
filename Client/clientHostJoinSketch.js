@@ -1,12 +1,7 @@
-//NOTE THIS FILE IS THE CENTRAL FILE FOR ALL FUNCTIONS TO GO THROUGH, PLEASE MODULARIZE CODE IN OTHER FILES
-let btnSize;
-
 function updateContainer() {
     container = select('#sketchContainer');
   w = parseFloat(getComputedStyle(container.elt).getPropertyValue('width'));
   h = parseFloat(getComputedStyle(container.elt).getPropertyValue('height'));
-  btnSize = w/8;
-
 }
 
 function windowResized() {
@@ -23,19 +18,26 @@ function windowResized() {
   }
 
   function draw() {
+    btnHeight = 30;
     fill('#FFFFFF');
-    rect(1, 1, w-2, h-2);
+    rect(0, 2*btnHeight, w, btnHeight);
+    rect(0, 0, w, btnHeight);
     fill('#121212');
     strokeWeight(1);
     textSize(30);
     textAlign("center", "center");
-    text("PLACEHOLDER", w/2, h/2);
-    
+    text("Join a room", w/2, btnHeight/2);
+    text("Create a room", w/2, btnHeight/2 + 2*btnHeight);
+
+
   }
 
   function mouseClicked() {
     btnHeight = 30;
-    if (mouseX > 0 && mouseX < w && mouseY > btnSize*1.5 && mouseY < btnSize*2.5) {
-        window.location = "/hostPlaying.html";
+    if (mouseX > 0 && mouseX < w && mouseY > 0 && mouseY < btnHeight) {
+        window.location = "clientLoading.html";
+    }
+    if (mouseX > 0 && mouseX < w && mouseY > 2*btnHeight && mouseY < 3*btnHeight) {
+        window.location = "clientPlaying.html";
     }
   }
