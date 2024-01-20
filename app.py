@@ -9,33 +9,27 @@ app.config['SECRET_KEY'] = 'secret!'
 CORS(app,resources={r"/*":{"origins":"*"}})
 socketio = SocketIO(app,cors_allowed_origins="*")
 
+clients = []
+
 # Send HTML!
 @app.route('/')
 def root():    
-    return "Hello world!"
+    return render_template('index.html')
 
-# Returns a random number
-@app.route('/random')
-def random():  
-    from random import randint  
-    html = str(randint(1, 100))
-    return html
+@socketio.on('connect')
+def connected():
+    clients.append(request.sid)
 
-# Prints the user id
-@app.route('/user/<id>')
-def user_id(id):
-    return str(id)
-
-# Display the HTML Page & pass in a username parameter
-@app.route('/html/<username>')
-def html(username):
-    return render_template('index.html', username=username)
+@socketio.on('disconnect')
+def connected():
+    clients.remove(request.sid)
 
 # Receive a message from the front end HTML
 @socketio.on('send_message')   
 def message_recieved(data):
     print(data['text'])
-    emit('message_from_server', {'text':'Message recieved!'})
+    print(clients)
+    emit('message_from_server', {'text': data['text']}, to=clients[0])
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True, port=5001)
+    socketio.run(app, host="0.0.0.0")
