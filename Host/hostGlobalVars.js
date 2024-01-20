@@ -37,14 +37,14 @@ function move_left(index) {
         players[index].x = players[index].x-1;
     }
 }
-function move_down(index) {
-    if (index >= 0 && index < playerCount && players[index].y < mapSize-1 && textures[players[index].y-1][players[index].x] != -1) {
-        players[index].y = players[index].y+1;
+function move_up(index) {
+    if (index >= 0 && index < playerCount && players[index].y > 0 && textures[players[index].y-1][players[index].x] != -1) {
+        players[index].y = players[index].y-1;
     }
 }
-function move_up(index) {
-    if (index >= 0 && index < playerCount && players[index].y > 0 && textures[players[index].y+1][players[index].x] != -1) {
-        players[index].y = players[index].y-1;
+function move_down(index) {
+    if (index >= 0 && index < playerCount && players[index].y < mapSize-1 && textures[players[index].y+1][players[index].x] != -1) {
+        players[index].y = players[index].y+1;
     }
 }
 

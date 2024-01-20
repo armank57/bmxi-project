@@ -13,31 +13,31 @@ function buy_bridge(index) {
     found = 0;
     x = players[index].x;
     y = players[index].y;
-    if (textures[y][x+1] == -1) {
+    if (x < mapSize - 1 && textures[y][x+1] == -1) {
         found = 1;
     }
-    if (textures[y][x-1] == -1) {
+    if (x > 0 && textures[y][x-1] == -1) {
         found += 1;
     }
-    if (textures[y+1][x] == -1) {
+    if (y < mapSize - 1 && textures[y+1][x] == -1) {
         found += 1;
     }
-    if (textures[y-1][x] == -1) {
+    if (y > 0 && textures[y-1][x] == -1) {
         found += 1;
     }
     if (found == 1) {
         if (index >= 0 && index < playerCount && players[index].money >= brigdeCost) {
             players[index].money -= buildOneCost;
-            if (textures[y][x+1] == -1) {
+            if (x < mapSize - 1 && textures[y][x+1] == -1) {
                 textures[y][x+1] = -2;
             }
-            else if (textures[y][x-1] == -1) {
+            else if (x > 0 && textures[y][x-1] == -1) {
                 textures[y][x-1] = -2;
             }
-            else if (textures[y+1][x] == -1) {
+            else if (y < mapSize - 1 && textures[y+1][x] == -1) {
                 textures[y+1][x] = -2;
             }
-            else if (textures[y-1][x] == -1) {
+            else if (y > 0 && textures[y-1][x] == -1) {
                 textures[y-1][x] = -2;
             }
 
@@ -49,31 +49,31 @@ function buy_bridge(index) {
 
     //check for one land
     found = 0;
-    if (textures[y][x+1] != -1) {
+    if (x < mapSize - 1 && textures[y][x+1] != -1) {
         found = 1;
     }
-    if (textures[y][x-1] != -1) {
+    if (x > 0 && textures[y][x-1] != -1) {
         found += 1;
     }
-    if (textures[y+1][x] != -1) {
+    if (y < mapSize - 1 && textures[y+1][x] != -1) {
         found += 1;
     }
-    if (textures[y-1][x] != -1) {
+    if (y > 0 && textures[y-1][x] != -1) {
         found += 1;
     }
     if (found == 1) {
         if (index >= 0 && index < playerCount && players[index].money >= brigdeCost) {
             players[index].money -= buildOneCost;
-            if (textures[y][x+1] != -1) {
+            if (x < mapSize - 1 && textures[y][x+1] != -1) {
                 textures[y][x-1] = -2;
             }
-            else if (textures[y][x-1] != -1) {
+            else if (x > 0 && textures[y][x-1] != -1) {
                 textures[y][x+1] = -2;
             }
-            else if (textures[y+1][x] != -1) {
+            else if (y < mapSize - 1 && textures[y+1][x] != -1) {
                 textures[y-1][x] = -2;
             }
-            else if (textures[y-1][x] != -1) {
+            else if (y > 0 && textures[y-1][x] != -1) {
                 textures[y+1][x] = -2;
             }
 
