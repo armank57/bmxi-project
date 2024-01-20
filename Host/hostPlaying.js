@@ -120,4 +120,7 @@ function windowResized() {
     if (keyCode == 66 && pause != 1) {
       buy_building_one(debugHostSelectedPlayer);
     }
+    if (keyCode == 86 && pause != 1) {
+      buy_bridge(debugHostSelectedPlayer);
+    }
   }

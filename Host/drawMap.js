@@ -1,7 +1,6 @@
 
 
 function draw_map(w, h) {
-    generate_map();
     for(row = 0; row < mapSize; row++) {
         for (col = 0; col < mapSize; col++) {
             if (textures[row][col] == 0) {
@@ -13,6 +12,7 @@ function draw_map(w, h) {
                 stroke("#000000");
             }
             else if (textures[row][col] == 1) { //building 1
+                console.log("building");
                 rectMode(CORNER);
                 fill("#CCCC12");
                 stroke("#121212");
@@ -70,6 +70,14 @@ function draw_map(w, h) {
                 fill("#FFFFFF");
                 stroke("#000000");
             }
+            else if (textures[row][col] == -2) { //bridge
+                rectMode(CORNER);
+                fill("#997B3F");
+                noStroke();
+                rect(w*col/mapSize, h*row/mapSize, w/mapSize, h/mapSize);
+                fill("#FFFFFF");
+                stroke("#000000");
+            }
         }
     }
     //draw selected players:
@@ -114,37 +122,3 @@ function draw_map(w, h) {
 
 }
 
-function generate_map() {
-    //corners
-    for (let i = 0; i < islandSize+1; i++) {
-        textures[mapSize-1-i][islandSize] = -1;
-        textures[mapSize-1-i][mapSize-1-islandSize] = -1;
-        textures[i][islandSize] = -1;
-        textures[i][mapSize-1-islandSize] = -1;
-        textures[islandSize][mapSize-1-i] = -1;
-        textures[mapSize-1-islandSize][mapSize-1-i] = -1;
-        textures[islandSize][i] = -1;
-        textures[mapSize-1-islandSize][i] = -1;
-    }
-    for (let i = 0; i < islandSize+2; i++) {
-        textures[mapSize-1-i][islandSize+1] = -1;
-        textures[mapSize-1-i][mapSize-2-islandSize] = -1;
-        textures[i][islandSize+1] = -1;
-        textures[i][mapSize-2-islandSize] = -1;
-        textures[islandSize+1][mapSize-1-i] = -1;
-        textures[mapSize-2-islandSize][mapSize-1-i] = -1;
-        textures[islandSize+1][i] = -1;
-        textures[mapSize-2-islandSize][i] = -1;
-    }
-    for (let i = 0; i <= centerSize; i++) {
-        ms = int(mapSize/2);
-        textures[ms+i][ms+centerSize] = -1;
-        textures[ms-i][ms+centerSize] = -1;
-        textures[ms+i][ms-centerSize] = -1;
-        textures[ms-i][ms-centerSize] = -1;
-        textures[ms-centerSize][ms-i] = -1;
-        textures[ms+centerSize][ms-i] = -1;
-        textures[ms-centerSize][ms+i] = -1;
-        textures[ms+centerSize][ms+i] = -1;
-    }
-}
