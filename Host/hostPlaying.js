@@ -141,4 +141,8 @@ function windowResized() {
     if (keyCode == 86 && pause != 1) {
       buy_bridge(debugHostSelectedPlayer);
     }
+    // changed by matthew
+    if (keyCode == 77 && pause != 1) {
+      buy_tile(debugHostSelectedPlayer);
+    }
   }

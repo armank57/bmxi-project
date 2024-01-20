@@ -12,7 +12,34 @@ function buy_building_one(index) {
 }
 
 function buy_tile(index) {
+    adjacent = 0;
+    x = players[index].x;
+    y = players[index].y;
 
+    
+    if (x < mapSize - 1 && ownership[y][x+1] == index) {
+        adjacent = 1;
+    }
+    if (x > 0 && ownership[y][x-1] == index) {
+        adjacent += 1;
+    }
+    if (y < mapSize - 1 && ownership[y+1][x] == index) {
+        adjacent += 1;
+    }
+    if (y > 0 && ownership[y-1][x] == index) {
+        adjacent += 1;
+    }
+
+    if (adjacent >= 1) {
+        if (textures[y][x] == -2) {
+            return false
+        }
+        ownership[players[index].y][players[index].x] = index;
+        textures[players[index].y][players[index].x] = 1;
+    }
+
+    
+    
 }
 
 function buy_bridge(index) {

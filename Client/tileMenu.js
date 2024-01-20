@@ -20,6 +20,7 @@ function get_client_info() {
 function display_infow(w, h) {
     //display read only info
     rectMode(CENTER);
+    textAlign(CENTER, CENTER);
     strokeWeight(1);
     stroke("#000000");
     fill("#FFFFFF");
