@@ -1,4 +1,8 @@
 //NOTE THIS FILE IS THE CENTRAL FILE FOR ALL FUNCTIONS TO GO THROUGH, PLEASE MODULARIZE CODE IN OTHER FILES
+//Just need to put <script> in hostJoin.html before hostPlaying
+// uses functions from:
+// hostSettings.js
+
 let btnSize;
 let pause = 0;
 
@@ -31,10 +35,12 @@ function windowResized() {
     textSize(30);
     textAlign("center", "center");
     text("PLACEHOLDER", w/2, h/2);
-    if (pause != 1) {
+    if (pause == 0) {
       drawPause();
-    } else {
+    } else if (pause == 1) {
       pauseScreen();
+    } else {
+      draw_settings_screen();
     }
   }
 
@@ -77,6 +83,7 @@ function windowResized() {
       }
       if (mouseX > w/2 - w/8 && mouseX < w/2 + w/8 && mouseY > h/2 - h/10 && mouseY < h/2 + h/10) {
         //settings?? if time
+        pause = -1;
       }
     }
   }
