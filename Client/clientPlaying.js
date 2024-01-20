@@ -37,10 +37,10 @@ function windowResized() {
   }
 
   function draw() {
-    rectMode(CORNER);
-    fill("#FFFFFF");
-    rect(1, 1, w-2, h-2);
     if (selectionMode == 1) {
+        rectMode(CORNER);
+        fill("#FFFFFF");
+        rect(1, 1, w-2, h-2);
         drawPause();
         //Arrows drawing
         rectMode(CENTER);
@@ -109,7 +109,12 @@ function windowResized() {
 
     } else if (selectionMode == -1) {
       //paused
+      rectMode(CORNER);
+      fill("#FFFFFF");
+      rect(1, 1, w-2, h-2);
       pauseScreen();
+    } else {
+
     }
   }
 
@@ -146,6 +151,7 @@ function windowResized() {
                 && mouseY > h/2 - btnSpace && mouseY < h/2 + btnSpace) {
             //center button
             console.log("Center");
+            selectionMode = test_action();
         }
         if (mouseX > w/2 - btnSpace + btnDist && mouseX < w/2 + btnSpace + btnDist 
                 && mouseY > h/2 - btnSpace && mouseY < h/2 + btnSpace) {

@@ -10,6 +10,11 @@ function updateContainer() {
     container = select('#sketchContainer');
   w = parseFloat(getComputedStyle(container.elt).getPropertyValue('width'));
   h = parseFloat(getComputedStyle(container.elt).getPropertyValue('height'));
+  if (w > h) {
+    w = h;
+  } else {
+    h = w;
+  }
   btnSize = w/8;
 
 }
@@ -21,6 +26,7 @@ function windowResized() {
   }
   
   function setup() {
+    init();
     updateContainer();
     canvas = createCanvas(w, h);
     smooth();
@@ -36,7 +42,7 @@ function windowResized() {
     textAlign("center", "center");
     text("PLACEHOLDER", w/2, h/2);
     if (pause == 0) {
-      drawPause();
+      draw_map(w, h);
     } else if (pause == 1) {
       pauseScreen();
     } else {
@@ -44,15 +50,6 @@ function windowResized() {
     }
   }
 
-  function drawPause() {
-    fill('#FFFFFF');
-    rect(1, 1, w/10, h/10);
-    fill('#121212');
-    strokeWeight(1);
-    textSize(30);
-    textAlign("center", "center");
-    text("Pause", 1, 1, w/10, h/10);
-  }
   function pauseScreen() {
     fill('#FFFFFF');
     rectMode(CENTER);
@@ -70,13 +67,10 @@ function windowResized() {
   }
 
   function mouseClicked() {
-    if (pause != 1) {
-      if (mouseX > 1 && mouseX < w/10 && mouseY > 1 && mouseY < h/10) {
-        pause = 1;
-      }
-    } else {
+    if (pause == 1){
       if (mouseX > w/6 - w/8 && mouseX < w/6 + w/8 && mouseY > h/2 - h/10 && mouseY < h/2 + h/10) {
         pause = 0;
+        move(0, 8, 8);
       }
       if (mouseX > w*5/6 - w/8 && mouseX < w*5/6 + w/8 && mouseY > h/2 - h/10 && mouseY < h/2 + h/10) {
         window.location = "hostJoin.html";
@@ -85,5 +79,10 @@ function windowResized() {
         //settings?? if time
         pause = -1;
       }
+    }
+  }
+  function keyPressed() {
+    if (keyCode == 27 && pause != 1) {
+      pause = 1;
     }
   }
