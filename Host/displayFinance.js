@@ -1,6 +1,9 @@
 function draw_money(w, h, offsetw, offseth) {
     if (offsetw != 0) {
         rectMode(CENTER);
+        noStroke();
+        fill("#FFFFFF");
+        rect(w + offsetw/2, h/2, offsetw, h);
         strokeWeight(1);
         stroke("#000000");
         fill("#000000");

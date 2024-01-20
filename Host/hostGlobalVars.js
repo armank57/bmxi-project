@@ -6,6 +6,10 @@ let players = Array(playerCount).fill(Player);
 let m = Array(playerCount).fill(2000);
 let debugHostSelectedPlayer = 0;
 
+let buildOneCost = 100;
+let buildTwoCost = 200;
+let buildThreeCost = 300;
+
 function init() {
     players[0] = new Player(0, int(mapSize/2), 1);
     players[1] = new Player(1, 1, int(mapSize/2));
