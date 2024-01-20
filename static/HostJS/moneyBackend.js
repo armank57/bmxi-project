@@ -1,4 +1,6 @@
 // buying tiles, buildings, buying resource tiles
+// farm, dock, mine, lumbermill, trading posts
+
 
 function buy_building_one(index) {
     if (index >= 0 && index < playerCount && players[index].money >= buildOneCost && textures[players[index].y][players[index].x] == 0) {
@@ -15,7 +17,6 @@ function buy_tile(index) {
     adjacent = 0;
     x = players[index].x;
     y = players[index].y;
-
     
     if (x < mapSize - 1 && ownership[y][x+1] == index) {
         adjacent = 1;
@@ -35,11 +36,9 @@ function buy_tile(index) {
             return false
         }
         ownership[players[index].y][players[index].x] = index;
-        textures[players[index].y][players[index].x] = 1;
+        players[index].money = players[index].money - tileCost
     }
 
-    
-    
 }
 
 function buy_bridge(index) {

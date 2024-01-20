@@ -3,6 +3,7 @@
 function draw_map(w, h) {
     for(row = 0; row < mapSize; row++) {
         for (col = 0; col < mapSize; col++) {
+    
             if (textures[row][col] == 0) {
                 rectMode(CORNER);
                 fill("#CCCCCC");
@@ -10,7 +11,7 @@ function draw_map(w, h) {
                 rect(w*col/mapSize, h*row/mapSize, w/mapSize, h/mapSize);
                 fill("#FFFFFF");
                 stroke("#000000");
-            }
+            } 
             else if (textures[row][col] == 1) { //building 1
                 console.log("building");
                 rectMode(CORNER);
@@ -78,6 +79,31 @@ function draw_map(w, h) {
                 fill("#FFFFFF");
                 stroke("#000000");
             }
+
+            if (ownership[row][col] == 0) {
+                fill("rgba(200,12,12, 0.5)");
+                noStroke();
+                rect(w*col/mapSize, h*row/mapSize, w/mapSize, h/mapSize);
+            }
+            else if (ownership[row][col] == 1) {
+                fill("rgba(12,100,12,0.5)");
+                noStroke();
+                rect(w*col/mapSize, h*row/mapSize, w/mapSize, h/mapSize);
+                
+                
+            }
+            else if (ownership[row][col] == 2) {
+                fill("rgba(200,12,200,0.5)");
+                noStroke();
+                rect(w*col/mapSize, h*row/mapSize, w/mapSize, h/mapSize);
+            }
+            else if (ownership[row][col] == 3) {
+                fill("rgba(12,12,200,0.5)");
+                noStroke();
+                rect(w*col/mapSize, h*row/mapSize, w/mapSize, h/mapSize);
+                
+            }
+            
         }
     }
     //draw selected players:

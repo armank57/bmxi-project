@@ -103,10 +103,11 @@ function generate_map() {
     }
 
     //testing stuff for matthew
-    textures[int(mapSize/2)][1] = 1
-    textures[1][int(mapSize/2)] = 1
 
     ownership[1][int(mapSize/2)] = 0
     ownership[int(mapSize/2)][1] = 1
+    ownership[mapSize-2][int(mapSize/2)] = 2
+    ownership[int(mapSize/2)][mapSize-2] = 3
+    
 
 }
