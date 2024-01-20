@@ -51,30 +51,56 @@ function windowResized() {
         rect(w/2 - btnDist, h/2, moveBtnSize, moveBtnSize, btnRadius);
         rect(w/2, h/2 + btnDist, moveBtnSize, moveBtnSize, btnRadius);
         rect(w/2, h/2 - btnDist, moveBtnSize, moveBtnSize, btnRadius);
-        //arrows
-        strokeWeight(10);
-        line(w/2 + btnEdge + btnRadius, h/2, w/2 + btnEdge + moveBtnSize - btnRadius, h/2);
-        line(w/2 + btnEdge + moveBtnSize - 2 * btnRadius, h/2 - btnRadius, w/2 + btnEdge + moveBtnSize - btnRadius, h/2);
-        line(w/2 + btnEdge + moveBtnSize - 2 * btnRadius, h/2 + btnRadius, w/2 + btnEdge + moveBtnSize - btnRadius, h/2);
-
-        line(w/2 - btnEdge - btnRadius, h/2, w/2 - btnEdge - moveBtnSize + btnRadius, h/2);
-        line(w/2 - btnEdge - moveBtnSize + 2 * btnRadius, h/2 - btnRadius, w/2 - btnEdge - moveBtnSize + btnRadius, h/2);
-        line(w/2 - btnEdge - moveBtnSize + 2 * btnRadius, h/2 + btnRadius, w/2 - btnEdge - moveBtnSize + btnRadius, h/2);
-
-        line(w/2, h/2 + btnEdge + btnRadius, w/2, h/2 + btnEdge + moveBtnSize - btnRadius);
-        line(w/2, h/2 + btnEdge + moveBtnSize - btnRadius, w/2 + btnRadius, h/2 + btnEdge + moveBtnSize - 2* btnRadius);
-        line(w/2, h/2 + btnEdge + moveBtnSize - btnRadius, w/2 - btnRadius, h/2 + btnEdge + moveBtnSize - 2*btnRadius);
-
-        line(w/2, h/2 - btnEdge - btnRadius, w/2, h/2 - btnEdge - moveBtnSize + btnRadius);
-        line(w/2, h/2 - btnEdge - moveBtnSize + btnRadius, w/2 + btnRadius, h/2 - btnEdge - moveBtnSize + 2* btnRadius);
-        line(w/2, h/2 - btnEdge - moveBtnSize + btnRadius, w/2 - btnRadius, h/2 - btnEdge - moveBtnSize + 2*btnRadius);
-        strokeWeight(1);
 
         //diags
         rect(w/2 + btnDist, h/2 + btnDist, moveBtnSize, moveBtnSize, btnRadius);
         rect(w/2 - btnDist, h/2 + btnDist, moveBtnSize, moveBtnSize, btnRadius);
         rect(w/2 + btnDist, h/2 - btnDist, moveBtnSize, moveBtnSize, btnRadius);
         rect(w/2 - btnDist, h/2 - btnDist, moveBtnSize, moveBtnSize, btnRadius);
+
+        //arrows
+        strokeWeight(10);
+
+        // east arrow
+        line(w/2 + btnEdge + btnRadius, h/2, w/2 + btnEdge + moveBtnSize - btnRadius, h/2);
+        line(w/2 + btnEdge + moveBtnSize - 2 * btnRadius, h/2 - btnRadius, w/2 + btnEdge + moveBtnSize - btnRadius, h/2);
+        line(w/2 + btnEdge + moveBtnSize - 2 * btnRadius, h/2 + btnRadius, w/2 + btnEdge + moveBtnSize - btnRadius, h/2);
+        // west arrow
+        line(w/2 - btnEdge - btnRadius, h/2, w/2 - btnEdge - moveBtnSize + btnRadius, h/2);
+        line(w/2 - btnEdge - moveBtnSize + 2 * btnRadius, h/2 - btnRadius, w/2 - btnEdge - moveBtnSize + btnRadius, h/2);
+        line(w/2 - btnEdge - moveBtnSize + 2 * btnRadius, h/2 + btnRadius, w/2 - btnEdge - moveBtnSize + btnRadius, h/2);
+
+        // south arrow
+        line(w/2, h/2 + btnEdge + btnRadius, w/2, h/2 + btnEdge + moveBtnSize - btnRadius);
+        line(w/2, h/2 + btnEdge + moveBtnSize - btnRadius, w/2 + btnRadius, h/2 + btnEdge + moveBtnSize - 2* btnRadius);
+        line(w/2, h/2 + btnEdge + moveBtnSize - btnRadius, w/2 - btnRadius, h/2 + btnEdge + moveBtnSize - 2*btnRadius);
+
+        // north arrow
+        line(w/2, h/2 - btnEdge - btnRadius, w/2, h/2 - btnEdge - moveBtnSize + btnRadius);
+        line(w/2, h/2 - btnEdge - moveBtnSize + btnRadius, w/2 + btnRadius, h/2 - btnEdge - moveBtnSize + 2* btnRadius);
+        line(w/2, h/2 - btnEdge - moveBtnSize + btnRadius, w/2 - btnRadius, h/2 - btnEdge - moveBtnSize + 2*btnRadius);
+
+        // northeast arrow
+        line(w/2 + btnEdge + btnRadius, h/2 - btnEdge - btnRadius, w/2 + btnEdge - btnRadius + moveBtnSize, h/2 - btnEdge + btnRadius - moveBtnSize);
+        line(w/2 + btnEdge - btnRadius + moveBtnSize, h/2 - btnEdge + btnRadius - moveBtnSize, w/2 + btnEdge - btnRadius + moveBtnSize, h/2 - btnEdge + 2*btnRadius - moveBtnSize);
+        line(w/2 + btnEdge - btnRadius + moveBtnSize, h/2 - btnEdge + btnRadius - moveBtnSize, w/2 + btnEdge - 2*btnRadius + moveBtnSize, h/2 - btnEdge + btnRadius - moveBtnSize);
+
+        // northwest arrow
+        line(w/2 - btnEdge - btnRadius, h/2 - btnEdge - btnRadius, w/2 - btnEdge + btnRadius - moveBtnSize, h/2 - btnEdge + btnRadius - moveBtnSize);
+        line(w/2 - btnEdge + btnRadius - moveBtnSize, h/2 - btnEdge + btnRadius - moveBtnSize, w/2 - btnEdge + btnRadius - moveBtnSize, h/2 - btnEdge + 2*btnRadius - moveBtnSize);
+        line(w/2 - btnEdge + btnRadius - moveBtnSize, h/2 - btnEdge + btnRadius - moveBtnSize, w/2 - btnEdge + 2*btnRadius - moveBtnSize, h/2 - btnEdge + btnRadius - moveBtnSize);
+
+        // southwest arrow
+        line(w/2 - btnEdge - btnRadius, h/2 + btnEdge + btnRadius, w/2 - btnEdge + btnRadius - moveBtnSize, h/2 + btnEdge - btnRadius + moveBtnSize);
+        line(w/2 - btnEdge + btnRadius - moveBtnSize, h/2 + btnEdge - btnRadius + moveBtnSize, w/2 - btnEdge + btnRadius - moveBtnSize, h/2 + btnEdge - 2*btnRadius + moveBtnSize);
+        line(w/2 - btnEdge + btnRadius - moveBtnSize, h/2 + btnEdge - btnRadius + moveBtnSize, w/2 - btnEdge + 2*btnRadius - moveBtnSize, h/2 + btnEdge - btnRadius + moveBtnSize);
+
+        // southeast arrow
+        line(w/2 + btnEdge + btnRadius, h/2 + btnEdge + btnRadius, w/2 + btnEdge - btnRadius + moveBtnSize, h/2 + btnEdge - btnRadius + moveBtnSize);
+        line(w/2 + btnEdge - btnRadius + moveBtnSize, h/2 + btnEdge - btnRadius + moveBtnSize, w/2 + btnEdge - btnRadius + moveBtnSize, h/2 + btnEdge - 2*btnRadius + moveBtnSize);
+        line(w/2 + btnEdge - btnRadius + moveBtnSize, h/2 + btnEdge - btnRadius + moveBtnSize, w/2 + btnEdge - 2*btnRadius + moveBtnSize, h/2 + btnEdge - btnRadius + moveBtnSize);
+        strokeWeight(1);
+
     }
   }
 
