@@ -60,6 +60,6 @@ function drawBack() {
 
 function mouseClicked() {
     if (mouseX > 1 && mouseX < w/10 && mouseY > 1 && mouseY < h/10) {
-        window.location = "clientHostJoin.html";
+        window.location = "clientHostJoin";
     }
 }

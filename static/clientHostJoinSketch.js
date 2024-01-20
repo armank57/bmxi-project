@@ -36,9 +36,9 @@ function windowResized() {
   function mouseClicked() {
     btnHeight = 30;
     if (mouseX > 0 && mouseX < w && mouseY > 0 && mouseY < btnHeight) {
-        window.location = "clientLoading.html";
+        window.location = "clientLoading";
     }
     if (mouseX > 0 && mouseX < w && mouseY > 2*btnHeight && mouseY < 3*btnHeight) {
-        window.location = "clientPlaying.html";
+        window.location = "clientPlaying";
     }
   }

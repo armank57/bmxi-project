@@ -14,7 +14,23 @@ clients = []
 # Send HTML!
 @app.route('/')
 def root():    
-    return render_template('index.html')
+    return render_template('clientHostJoin.html')
+
+@app.route('/clientLoading')
+def clientLoading():    
+    return render_template('clientLoading.html')
+
+@app.route('/clientPlaying')
+def clientPlaying():    
+    return render_template('clientPlaying.html')
+
+@app.route('/hostJoin')
+def hostJoin():    
+    return render_template('hostJoin.html')
+
+@app.route('/hostPlaying')
+def hostPlaying():    
+    return render_template('hostPlaying.html')
 
 @socketio.on('connect')
 def connected():
@@ -32,4 +48,4 @@ def message_recieved(data):
     emit('message_from_server', {'text': data['text']}, to=clients[0])
 
 if __name__ == '__main__':
-    socketio.run(app, host="0.0.0.0")
+    socketio.run(app, debug=True, host="0.0.0.0")
