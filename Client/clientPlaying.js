@@ -38,10 +38,10 @@ function windowResized() {
 
   function draw() {
     if (selectionMode == 1) {
+        textSize(30);
         rectMode(CORNER);
         fill("#FFFFFF");
         rect(1, 1, w-2, h-2);
-        drawPause();
         //Arrows drawing
         rectMode(CENTER);
         fill("#FFFFFF");
@@ -106,28 +106,26 @@ function windowResized() {
         line(w/2 + btnEdge - btnRadius + moveBtnSize, h/2 + btnEdge - btnRadius + moveBtnSize, w/2 + btnEdge - 2*btnRadius + moveBtnSize, h/2 + btnEdge - btnRadius + moveBtnSize);
         strokeWeight(1);
 
-
+        display_menu(w, h);
     } else if (selectionMode == -1) {
       //paused
       rectMode(CORNER);
       fill("#FFFFFF");
       rect(1, 1, w-2, h-2);
       pauseScreen();
-    } else {
-
     }
   }
 
-  function drawPause() {
-    rectMode(CORNER);
-    fill('#FFFFFF');
-    rect(1, 1, w/10, h/10);
-    fill('#121212');
-    strokeWeight(1);
-    textSize(30);
-    textAlign("center", "center");
-    text("Pause", 1, 1, w/10, h/10);
-  }
+  // function drawPause() {
+  //   rectMode(CORNER);
+  //   fill('#FFFFFF');
+  //   rect(1, 1, w/10, h/10);
+  //   fill('#121212');
+  //   strokeWeight(1);
+  //   textSize(30);
+  //   textAlign("center", "center");
+  //   text("Pause", 1, 1, w/10, h/10);
+  // }
   function pauseScreen() {
     fill('#FFFFFF');
     rectMode(CENTER);
@@ -147,11 +145,12 @@ function windowResized() {
   function mouseClicked() {
     if (selectionMode == 1) {
       halfBtn = moveBtnSize/2;
+      tile_display_buttons();
         if (mouseX > w/2 - btnSpace && mouseX < w/2 + btnSpace 
                 && mouseY > h/2 - btnSpace && mouseY < h/2 + btnSpace) {
             //center button
             console.log("Center");
-            selectionMode = test_action();
+            //selectionMode = test_action();
         }
         if (mouseX > w/2 - btnSpace + btnDist && mouseX < w/2 + btnSpace + btnDist 
                 && mouseY > h/2 - btnSpace && mouseY < h/2 + btnSpace) {
@@ -193,9 +192,6 @@ function windowResized() {
             //bottom left button
             console.log("Bottom left");
         }
-        if (mouseX > 1 && mouseX < w/10 && mouseY > 1 && mouseY < h/10) {
-          selectionMode = -1;
-        }
     } else if (selectionMode == -1) {
       if (mouseX > w/6 - w/8 && mouseX < w/6 + w/8 && mouseY > h/2 - h/10 && mouseY < h/2 + h/10) {
         selectionMode = 1;
@@ -203,5 +199,11 @@ function windowResized() {
       if (mouseX > w*5/6 - w/8 && mouseX < w*5/6 + w/8 && mouseY > h/2 - h/10 && mouseY < h/2 + h/10) {
         window.location = "clientHostJoin.html";
       }
+    }
+  }
+
+  function keyPressed() {
+    if(keyCode == 27 && selectionMode != -1) {
+      selectionMode = -1;
     }
   }
