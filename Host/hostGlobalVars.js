@@ -5,7 +5,6 @@ let centerSize = 2; //half of size
 let textures = Array(mapSize).fill(null).map(()=>Array(mapSize).fill(0));
 let ownership = Array(mapSize).fill(null).map(()=>Array(mapSize).fill(0));
 let players = Array(playerCount).fill(Player);
-let m = Array(playerCount).fill(2000);
 let debugHostSelectedPlayer = 0;
 
 let buildOneCost = 100;

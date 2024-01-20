@@ -1,12 +1,18 @@
+// buying tiles, buildings, buying resource tiles
+
 function buy_building_one(index) {
     if (index >= 0 && index < playerCount && players[index].money >= buildOneCost && textures[players[index].y][players[index].x] == 0) {
-        m[index] = m[index] - buildOneCost;
+        players[index].money = players[index].money - buildOneCost;
         ownership[players[index].y][players[index].x] = index;
         textures[players[index].y][players[index].x] = 1;
         return true;
     } else {
         return false;
     }
+}
+
+function buy_tile(index) {
+
 }
 
 function buy_bridge(index) {
