@@ -1,9 +1,11 @@
 let mapSize = 25;
+// 0 = blank, -1 = ocean, -2 = bridge, 1-3 buildings, 4 = tiles
 let playerCount = 4;
 let islandSize = 7;
 let centerSize = 2; //half of size
 let textures = Array(mapSize).fill(null).map(()=>Array(mapSize).fill(0));
-let ownership = Array(mapSize).fill(null).map(()=>Array(mapSize).fill(0));
+// changed ownership from 0
+let ownership = Array(mapSize).fill(null).map(()=>Array(mapSize).fill(-1));
 let players = Array(playerCount).fill(Player);
 let debugHostSelectedPlayer = 0;
 
@@ -11,6 +13,7 @@ let buildOneCost = 100;
 let buildTwoCost = 200;
 let buildThreeCost = 300;
 let brigdeCost = 10;
+let tileCost = 5;
 
 function init() {
     players[0] = new Player(0, int(mapSize/2), 1);
@@ -98,4 +101,12 @@ function generate_map() {
         textures[ms-centerSize][ms+i] = -1;
         textures[ms+centerSize][ms+i] = -1;
     }
+
+    //testing stuff for matthew
+    textures[int(mapSize/2)][1] = 1
+    textures[1][int(mapSize/2)] = 1
+
+    ownership[1][int(mapSize/2)] = 0
+    ownership[int(mapSize/2)][1] = 1
+
 }
