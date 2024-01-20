@@ -8,11 +8,18 @@ let pause = 0;
 
 function updateContainer() {
     container = select('#sketchContainer');
-  w = parseFloat(getComputedStyle(container.elt).getPropertyValue('width'));
-  h = parseFloat(getComputedStyle(container.elt).getPropertyValue('height'));
+  wa = parseFloat(getComputedStyle(container.elt).getPropertyValue('width'));
+  w = wa;
+  ha = parseFloat(getComputedStyle(container.elt).getPropertyValue('height'));
+  h = ha;
+  console.log(w + " "+ h);
+  offsetw = 0;
+  offseth = 0;
   if (w > h) {
+    offsetw = w - h;
     w = h;
   } else {
+    offseth = h - w;
     h = w;
   }
   btnSize = w/8;
@@ -21,14 +28,14 @@ function updateContainer() {
 
 function windowResized() {
     updateContainer();
-    resizeCanvas(w, h);
+    resizeCanvas(wa, ha);
     drawing = true;
   }
   
   function setup() {
     init();
     updateContainer();
-    canvas = createCanvas(w, h);
+    canvas = createCanvas(wa, ha);
     smooth();
     canvas.parent("#sketchContainer");
   }
@@ -43,6 +50,7 @@ function windowResized() {
     text("PLACEHOLDER", w/2, h/2);
     if (pause == 0) {
       draw_map(w, h);
+      draw_money(w,h, offsetw, offseth);
     } else if (pause == 1) {
       pauseScreen();
     } else {
