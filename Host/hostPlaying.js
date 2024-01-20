@@ -72,10 +72,10 @@ function windowResized() {
         pause = 0;
         move(0, 8, 8);
       }
-      if (mouseX > w*5/6 - w/8 && mouseX < w*5/6 + w/8 && mouseY > h/2 - h/10 && mouseY < h/2 + h/10) {
+      if (mouseX > w*5/6 - w/8 && mouseX < w*5/6 + w/8 && mouseY > h/2 - h/10 && mouseY < h/2 + h/10) { // quit
         window.location = "hostJoin.html";
       }
-      if (mouseX > w/2 - w/8 && mouseX < w/2 + w/8 && mouseY > h/2 - h/10 && mouseY < h/2 + h/10) {
+      if (mouseX > w/2 - w/8 && mouseX < w/2 + w/8 && mouseY > h/2 - h/10 && mouseY < h/2 + h/10) { // settings
         //settings?? if time
         pause = -1;
       }
