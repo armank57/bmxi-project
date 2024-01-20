@@ -1,6 +1,7 @@
 let mapSize = 17;
 let playerCount = 4;
 let textures = Array(mapSize).fill(null).map(()=>Array(mapSize).fill(0));
+let ownership = Array(mapSize).fill(null).map(()=>Array(mapSize).fill(0));
 let players = Array(playerCount).fill(Player);
 let debugHostSelectedPlayer = 0;
 
@@ -18,22 +19,22 @@ function move(index, x, y) {
     }
 }
 function move_right(index) {
-    if (index >= 0 && index < playerCount && players[index].x < mapSize -1) {
+    if (index >= 0 && index < playerCount && players[index].x < mapSize -1 && textures[players[index].x+1][players[index].y] != -1) {
         players[index].x = players[index].x+1;
     }
 }
 function move_left(index) {
-    if (index >= 0 && index < playerCount && players[index].x > 0) {
+    if (index >= 0 && index < playerCount && players[index].x > 0 && textures[players[index].x-1][players[index].y] != -1) {
         players[index].x = players[index].x-1;
     }
 }
 function move_down(index) {
-    if (index >= 0 && index < playerCount && players[index].y < mapSize-1) {
+    if (index >= 0 && index < playerCount && players[index].y < mapSize-1 && textures[players[index].x][players[index].y+1] != -1) {
         players[index].y = players[index].y+1;
     }
 }
 function move_up(index) {
-    if (index >= 0 && index < playerCount && players[index].y > 0) {
+    if (index >= 0 && index < playerCount && players[index].y > 0 && textures[players[index].x][players[index].y-1] != -1) {
         players[index].y = players[index].y-1;
     }
 }
