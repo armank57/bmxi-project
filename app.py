@@ -57,6 +57,14 @@ def disconnect():
         host0 = ""
     elif host1 == sid:
         host1 = ""
+    else:
+        for i in clients0:
+            if i == sid:
+                clients0.remove(sid)
+
+        for i in clients1:
+            if i == sid:
+                clients1.remove(sid)
 
     
 
