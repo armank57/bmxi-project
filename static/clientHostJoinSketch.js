@@ -37,6 +37,7 @@ function draw() {
   btnHeight = 30;
   btnRadius = 10;
   fill('#FFFFFF');
+  rect(w/2 - 125, h / 2 + 4*btnHeight, 250, btnHeight, btnRadius);
   rect(w/2 - 125, h / 2 + 2*btnHeight, 250, btnHeight, btnRadius);
   rect(w/2 - 125, h / 2, 250, btnHeight, btnRadius);
   fill('#121212');
@@ -44,9 +45,10 @@ function draw() {
   textFont('Helvetica');
   textSize(28);
   textAlign("center", "center");
-  image(logo, w / 2 - 450, h / 16, 900, 300);
+  image(logo, w / 2 - 300, h / 16, 600, 200);
   text("Host a Game", w / 2, h / 2 + 0.5 * btnHeight);
   text("Join a Room", w / 2, h / 2 + 2.5 * btnHeight);
+  text("How to Play", w / 2, h / 2 + 4 * btnHeight);
 
   if (boolAddress != 0) {
     if (inputStr == 'SH') {
@@ -68,5 +70,8 @@ function draw() {
     }
     if (mouseX > (w/2 - 125) && mouseX < (w/2 + 125) && mouseY > h/2 + 2*btnHeight && mouseY < (h/2 + 3 * btnHeight)) {
         window.location = "/clientPlaying"//sendData("newP?")
+    }
+    if (mouseX > (w/2 - 125) && mouseX < (w/2 + 125) && mouseY > h/2 + 4*btnHeight && mouseY < (h/2 + 5 * btnHeight)) {
+      window.location = "/howToPlay"
     }
   }
