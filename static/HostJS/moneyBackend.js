@@ -108,7 +108,7 @@ function buy_tile(index) {
     x = players[index].x;
     y = players[index].y;
 
-    if (ownership[players[index].y][players[index].x] == index) {
+    if (ownership[players[index].y][players[index].x] != -1) {
         return false;
     }
     
@@ -137,10 +137,7 @@ function buy_tile(index) {
         adjacent += 1;
     }
 
-    if (adjacent >= 1) {
-        if (textures[y][x] == -2) {
-            return false;
-        }
+    if (adjacent >= 1 && players[index].money >= 10) {
         ownership[players[index].y][players[index].x] = index;
         players[index].money = players[index].money - tileCost
     }
@@ -151,7 +148,10 @@ function check_buy_tile(index) {
     adjacent = 0;
     x = players[index].x;
     y = players[index].y;
-    
+    if (ownership[y][x] != -1) {
+        return false;
+    }
+
     if (x < mapSize - 1 && ownership[y][x+1] == index) {
         adjacent = 1;
     }
@@ -165,10 +165,7 @@ function check_buy_tile(index) {
         adjacent += 1;
     }
 
-    if (adjacent >= 1) {
-        if (textures[y][x] == -2) {
-            return false
-        }
+    if ((adjacent >= 1 || (textures[y][x] >= 5 && textures[y][x] <= 7)) && players[index].money >= 10 ) {
         return true;
     }
     return false;
@@ -277,16 +274,16 @@ function check_buy_bridge(index) {
 
     //check for one land
     found = 0;
-    if (x < mapSize - 1 && textures[y][x+1] >= 0) {
+    if (x < mapSize - 1 && textures[y][x+1] != -1) {
         found = 1;
     }
-    if (x > 0 && textures[y][x-1] >= 0) {
+    if (x > 0 && textures[y][x-1] != -1) {
         found += 1;
     }
-    if (y < mapSize - 1 && textures[y+1][x] >= 0) {
+    if (y < mapSize - 1 && textures[y+1][x] != -1) {
         found += 1;
     }
-    if (y > 0 && textures[y-1][x] >= 0) {
+    if (y > 0 && textures[y-1][x] != -1) {
         found += 1;
     }
     if (found == 1) {
