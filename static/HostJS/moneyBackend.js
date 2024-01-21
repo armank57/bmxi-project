@@ -38,7 +38,7 @@ function check_building_one(index) { //farm
 
 
 function buy_building_two(index) { //mine
-    if (index >= 0 && index < playerCount && players[index].money >= buildOneCost && textures[players[index].y][players[index].x] == 7) {
+    if (index >= 0 && index < playerCount && players[index].money >= buildTwoCost && textures[players[index].y][players[index].x] == 7) {
     
         if (textures[players[index].y][players[index].x] == 5 || textures[players[index].y][players[index].x] == 6) {
             return false;
@@ -56,7 +56,7 @@ function buy_building_two(index) { //mine
 }
 
 function check_building_two(index) { //mine
-    if (index >= 0 && index < playerCount && players[index].money >= buildOneCost && textures[players[index].y][players[index].x] == 7) {
+    if (index >= 0 && index < playerCount && players[index].money >= buildTwoCost && textures[players[index].y][players[index].x] == 7) {
     
         if (textures[players[index].y][players[index].x] == 5 || textures[players[index].y][players[index].x] == 6) {
             return false;
@@ -72,7 +72,7 @@ function check_building_two(index) { //mine
 }
 
 function buy_building_three(index) { //lumbermill
-    if (index >= 0 && index < playerCount && players[index].money >= buildOneCost && textures[players[index].y][players[index].x] == 6) {
+    if (index >= 0 && index < playerCount && players[index].money >= buildThreeCost && textures[players[index].y][players[index].x] == 6) {
     
         if (textures[players[index].y][players[index].x] == 5 || textures[players[index].y][players[index].x] == 7) {
             return false;
@@ -90,7 +90,7 @@ function buy_building_three(index) { //lumbermill
 }
 
 function check_building_three(index) { //lumbermill
-    if (index >= 0 && index < playerCount && players[index].money >= buildOneCost && textures[players[index].y][players[index].x] == 6) {
+    if (index >= 0 && index < playerCount && players[index].money >= buildThreeCost && textures[players[index].y][players[index].x] == 6) {
     
         if (textures[players[index].y][players[index].x] == 5 || textures[players[index].y][players[index].x] == 7) {
             return false;
@@ -142,7 +142,7 @@ function buy_tile(index) {
 
     if (adjacent >= 1 && players[index].money >= 10) {
         ownership[players[index].y][players[index].x] = index;
-        players[index].money = players[index].money - tileCost
+        players[index].money = players[index].money - tileCost;
     }
 
 }
@@ -193,7 +193,7 @@ function buy_bridge(index) {
     }
     if (found == 1) {
         if (index >= 0 && index < playerCount && players[index].money >= brigdeCost) {
-            players[index].money -= buildOneCost;
+            players[index].money -= brigdeCost;
             if (x < mapSize - 1 && textures[y][x+1] == -1) {
                 textures[y][x+1] = -2;
             }
@@ -229,7 +229,7 @@ function buy_bridge(index) {
     }
     if (found == 1) {
         if (index >= 0 && index < playerCount && players[index].money >= brigdeCost) {
-            players[index].money -= buildOneCost;
+            players[index].money -= brigdeCost;
             if (x < mapSize - 1 && textures[y][x+1] >= 0) {
                 textures[y][x-1] = -2;
             }

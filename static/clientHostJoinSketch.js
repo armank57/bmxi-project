@@ -33,6 +33,7 @@ function setup() {
 }
 
 function draw() {
+  background(2, 2, 38);
   btnHeight = 30;
   btnRadius = 10;
   fill('#FFFFFF');
