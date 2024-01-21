@@ -4,7 +4,6 @@ let btnRadius;
 let btnDist;
 let btnSpace;
 let btnEdge;
-let playerID = 0;
 
 function updateContainer() {
     container = select('#sketchContainer');
