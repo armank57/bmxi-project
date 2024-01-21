@@ -19,6 +19,22 @@ function buy_building_one(index) { //farm
     }
 }
 
+function check_building_one(index) { //farm
+    if (index >= 0 && index < playerCount && players[index].money >= buildOneCost && textures[players[index].y][players[index].x] == 5) {
+    
+        if (textures[players[index].y][players[index].x] == 6 || textures[players[index].y][players[index].x] == 7) {
+            return false;
+        } 
+        
+        if (textures[players[index].y][players[index].x] == 5 && ownership[players[index].y][players[index].x] == index) {
+            return true;
+        }
+        return false;
+    } else {
+        return false;
+    }
+}
+
 
 function buy_building_two(index) { //mine
     if (index >= 0 && index < playerCount && players[index].money >= buildOneCost && textures[players[index].y][players[index].x] == 7) {
@@ -37,6 +53,22 @@ function buy_building_two(index) { //mine
     }
 }
 
+function check_building_two(index) { //mine
+    if (index >= 0 && index < playerCount && players[index].money >= buildOneCost && textures[players[index].y][players[index].x] == 7) {
+    
+        if (textures[players[index].y][players[index].x] == 5 || textures[players[index].y][players[index].x] == 6) {
+            return false;
+        } 
+        
+        if (textures[players[index].y][players[index].x] == 7 && ownership[players[index].y][players[index].x] == index) {
+            return true;
+        }
+        return false;
+    } else {
+        return false;
+    }
+}
+
 function buy_building_three(index) { //lumbermill
     if (index >= 0 && index < playerCount && players[index].money >= buildOneCost && textures[players[index].y][players[index].x] == 6) {
     
@@ -49,6 +81,22 @@ function buy_building_three(index) { //lumbermill
             textures[players[index].y][players[index].x] = 3;
         }
         return true;
+    } else {
+        return false;
+    }
+}
+
+function check_building_three(index) { //lumbermill
+    if (index >= 0 && index < playerCount && players[index].money >= buildOneCost && textures[players[index].y][players[index].x] == 6) {
+    
+        if (textures[players[index].y][players[index].x] == 5 || textures[players[index].y][players[index].x] == 7) {
+            return false;
+        } 
+        
+        if (textures[players[index].y][players[index].x] == 6 && ownership[players[index].y][players[index].x] == index) {
+            return true;
+        }
+        return false;
     } else {
         return false;
     }

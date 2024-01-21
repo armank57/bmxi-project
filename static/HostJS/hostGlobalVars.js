@@ -1,5 +1,6 @@
 let mapSize = 25;
-// 0 = blank, -1 = ocean, -2 = bridge, 1-3 buildings, 4 = tiles, food = 5, wood = 6, stone = 7
+// 0 = blank, -1 = ocean, -2 = bridge, 1 -3 buildings farm mine lumber, 4 = tiles, food = 5, wood = 6, stone = 7, 
+// trading post = -3, center=10(no building)
 let playerCount = 4;
 let islandSize = 7;
 let centerSize = 2; //half of size
@@ -19,11 +20,8 @@ let tileCost = 5;
 let boolAddress = 1;
 let inputStr = "";
 
-let buildingIMG;
 
-function time() {
-    
-}
+
 
 function init() {
     players[0] = new Player(0, 3, 3);

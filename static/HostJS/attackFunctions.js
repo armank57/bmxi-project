@@ -10,6 +10,37 @@ function calculateDistance(a, b) {
     return Math.sqrt(dx * dx + dy * dy);
 }
 
+function buyRange(index) {
+    if (players[index].stone >= 10 && players[index].money >= 10) {
+        players[index].range = 1
+        players[index].stone = players[index].stone - 10
+        players[index].money = players[index].money - 10
+    } 
+    if (players[index].iron >= 10 && players[index].money >= 15) {
+        players[index].range = 2
+        players[index].stone = players[index].iron - 10
+        players[index].money = players[index].money - 15
+    } 
+}
+
+function buyTroops(index) {
+    if (players[index].food >= 3 && players[index].money >= 3 && players[index].range == 2) {
+        players[index].fightingPower = players[index].fightingPower + 5
+        players[index].food = players[index].food - 3
+        players[index].money = players[index].money - 3
+    } 
+    if (players[index].food >= 3 && players[index].money >= 3 && players[index].range == 1) {
+        players[index].fightingPower = players[index].fightingPower + 4
+        players[index].food = players[index].food - 3
+        players[index].money = players[index].money - 3
+    } 
+    if (players[index].food >= 3 && players[index].money >= 3) {
+        players[index].fightingPower = players[index].fightingPower + 3
+        players[index].food = players[index].food - 3
+        players[index].money = players[index].money - 3
+    } 
+}
+
 
 /*
  * @brief Checks if the player is able to attack the target
