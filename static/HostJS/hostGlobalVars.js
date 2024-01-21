@@ -122,7 +122,7 @@ function Player(index, posX, posY) {
     this.fightingPower = 0;
     this.range = 0;
 
-    this.money = 30;
+    this.money = 100;
     this.food = 5;
 
     this.wood = 5;

@@ -86,13 +86,11 @@ function draw_map(w, h) {
                 } else if (textures[row][col] == 2 && ownership[row][col] == 3) {
                     players[3].stone = players[3].stone + 2;
                 }
-
-                if (col == mapSize - 1 && row == mapSize - 1) {
-                    flag = true
-                    for (k = 0; k< 4;k++) {
-                        buildStr(k, int(inputStr[2]));
-                    }
+                if (col == mapSize-1 && row == mapSize -1) {
+                    flag = true;
                 }
+
+                
             } else if (currentTime % 5 != 0) {
                 flag = false;
             }
