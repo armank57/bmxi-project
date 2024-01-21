@@ -1,6 +1,6 @@
-function buildStr(index) {
+function buildStr(index, room) {
     console.log(index);
-    outputStr = "C" + index;
+    outputStr = "C" + index + ""+room;
     outputStr += build_actions(index);
     outputStr += build_info(index);
     outputStr += build_player(index);

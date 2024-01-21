@@ -57,12 +57,13 @@ function draw() {
 
 }
 
-function mouseClicked() {
-  btnHeight = 30;
-  if (mouseX > 0 && mouseX < w && mouseY > 0 && mouseY < btnHeight) {
-    sendData("newH?")
+  function mouseClicked() {
+    btnHeight = 30;
+    if (mouseX > 0 && mouseX < w && mouseY > 0 && mouseY < btnHeight) {
+      window.location = "/hostPlaying"
+        //sendData("newH?")
+    }
+    if (mouseX > 0 && mouseX < w && mouseY > 2*btnHeight && mouseY < 3*btnHeight) {
+        window.location = "/clientPlaying"//sendData("newP?")
+    }
   }
-  if (mouseX > 0 && mouseX < w && mouseY > 2 * btnHeight && mouseY < 3 * btnHeight) {
-    sendData("newP?")
-  }
-}

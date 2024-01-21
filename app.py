@@ -57,23 +57,24 @@ def disconnect():
         host0 = ""
     elif host1 == sid:
         host1 = ""
-    else:
-        clients0.remove(sid)
-        clients1.remove(sid)
 
     
 
 # Receive a message from the front end HTML
 @socketio.on('send_message')   
 def message_recieved(data):
-    global host
+    global host0
+    global host1
+    global clients0
+    global clients1
     text = data['text']
     print(text)
     sid = request.sid
 
     if text == "newP?0":
         if len(clients0) < 4:
-            emit('message_from_server', {'text': "@" + str(player_num)} + '0', to=sid)
+            clients0.append(sid)
+            emit('message_from_server', {'text': "@" + str(clients0.index(sid)) + "0"}, to=sid)
         else:
             emit('message_from_server', {'text': "E"}, to=sid)
     elif text == "newH?0":
@@ -84,8 +85,9 @@ def message_recieved(data):
             emit('message_from_server', {'text': "E"}, to=sid)
 
     if text == "newP?1":
-        if len(clients0) < 4:
-            emit('message_from_server', {'text': "@" + str(player_num)} + '1', to=sid)
+        if len(clients1) < 4:
+            clients1.append(sid)
+            emit('message_from_server', {'text': "@" + str(clients1.index(sid)) + "1"}, to=sid)
         else:
             emit('message_from_server', {'text': "E"}, to=sid)
     elif text == "newH?1":
@@ -94,16 +96,6 @@ def message_recieved(data):
             emit('message_from_server', {'text': "SH1"}, to=sid)
         else:
             emit('message_from_server', {'text': "E"}, to=sid)
-
-    elif text == "newP":
-        clients.append(sid)
-        player_num = clients.index(sid)
-        if player_num <= 3:
-            emit('message_from_server', {'text': "@" + str(player_num)}, to=sid)
-        return
-
-    elif text == "newH":
-        host = request.sid
 
     elif text[0] == 'H':
         if text[2] == '0':

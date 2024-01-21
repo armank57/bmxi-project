@@ -2,6 +2,7 @@ let btns = ["Claim0", "Make Bridge0", "Upgrade0", "Range Upgrade0", "Fight Upgra
 let infot = ["Start", "of", "Game"];
 let infop = ["Fighting Power: - Range: - ","Money: - Food: - ","Wood: - Stone: - Iron: -"];
 let playerID = 0;
+let roomNum;
 let serverMessage = "This is a Test Server Message";
 let orientationh = 0; // 1 is vertical
 
@@ -226,11 +227,11 @@ function tile_display_buttons() {
             if (i != 13 && mouseX > w/5- w/10 && mouseX < w/5 + w/10 && mouseY > h*i/16 - h/18 && mouseY < h*i/16 + h/18) {
                 //ith button clicked
                 console.log((i-3)/2);
-                sendData("H" + playerID + "P" + (i-3)/2); //sends button selected to host
+                sendData("H" + playerID  + "" + roomNum + "P" + (i-3)/2); //sends button selected to host
             } else if (i == 13) {
                 for (j =0; j < 3; j++) {
                     if ( mouseX > w/5- w/15 + (j*w/15) - w/32 && mouseX < w/5- w/15 + (j*w/15) + w/32 && mouseY > h*i/16 - h/18 && mouseY < h*i/16 + h/18) {
-                        sendData("H" + playerID + "P" + (i-3)/2+j);
+                        sendData("H" + playerID  + "" + roomNum + "P" + (i-3)/2+j);
                     }
                 }
             }
@@ -239,14 +240,14 @@ function tile_display_buttons() {
         for (i = 0; i<2; i++) {
             for (j = 0; j < 3; j++) {
                 if((i != 1 || j != 2) && mouseX > w*(2*i+1)/4 - w/6 && mouseX < w*(2*i+1)/4 + w/6 && mouseY > h*(j+1)/16+h*14/20 - h/36 && mouseY < h*(j+1)/16+h*14/20 + h/36) {
-                sendData("H" + playerID + "P" + (3*i+j)); //sends button selected to host
+                sendData("H" + playerID  + "" + roomNum + "P" + (3*i+j)); //sends button selected to host
                 } else {
                     for (k = 0; k<3;k++) {
                         if (k == playerID) {
                             continue;
                         } else {
                             if (mouseX > w*(2*i+1)/4 -w/9 + (k *w/9) - w/20 && mouseX < w*(2*i+1)/4 -w/9 + (k *w/9) + w/20 && mouseY > h*(j+1)/16+h*14/20 - h/36 && mouseY < h*(j+1)/16+h*14/20 + h/36) {
-                                sendData("H" + playerID + "P" + (3*i+j+k));
+                                sendData("H" + playerID + "" + roomNum + "P" + (3*i+j+k));
                             }
                         }
                     }
