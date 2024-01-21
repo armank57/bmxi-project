@@ -1,1 +1,1 @@
-web: gunicorn app:socketio
+web: python3 app.py
