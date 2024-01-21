@@ -1,6 +1,6 @@
-let btns = ["a", "b", "c", "d", "e", "f"];
-let infot = ["info", "for", "tile"];
-let infop = ["info","for","player"];
+let btns = ["Claim0", "Make Bridge0", "Upgrade0", "Range Upgrade0", "Fight Upgrade0", "000"];
+let infot = ["Start", "of", "Game"];
+let infop = ["Fighting Power: - Range: - ","Money: - Food: - ","Wood: - Stone: - Iron: -"];
 let playerID = 0;
 let serverMessage = "This is a Test Server Message";
 
