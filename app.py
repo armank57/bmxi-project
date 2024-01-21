@@ -44,8 +44,9 @@ def disconnect():
     global host
     global clients
     sid = request.sid
+    print(sid)
     if host == sid:
-        host == ""
+        host = ""
     else:
         clients.remove()
     
@@ -78,4 +79,4 @@ def message_recieved(data):
         emit('message_from_server', {'text': text}, to=clients[int(text[1])])
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    socketio.run(app, host="0.0.0.0", debug=True)
