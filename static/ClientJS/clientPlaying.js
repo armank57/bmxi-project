@@ -11,9 +11,9 @@ function updateContainer() {
   h = parseFloat(getComputedStyle(container.elt).getPropertyValue('height'));
   //window resize for mobile
   if (h > w) {
-    moveBtnSize = w/4;
-    btnRadius = w/40;
-    btnDist = w/3.5;
+    moveBtnSize = w/6;
+    btnRadius = w/50;
+    btnDist = w/5;
   } else {
     moveBtnSize = h/4;
     btnRadius = h/40;

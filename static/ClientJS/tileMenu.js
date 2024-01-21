@@ -3,6 +3,7 @@ let infot = ["Start", "of", "Game"];
 let infop = ["Fighting Power: - Range: - ","Money: - Food: - ","Wood: - Stone: - Iron: -"];
 let playerID = 0;
 let serverMessage = "This is a Test Server Message";
+let orientationh = 0; // 1 is vertical
 
 let boolAddress = 1;
 let inputStr = "";
@@ -12,9 +13,11 @@ function display_menu(w, h) {
     if (w > h) {
         display_infow(w, h);
         display_actionsw(w, h);
+        orientationh = 0;
     } else {
-        display_info(w, h/2);
-        display_actions(w, h/2, 1);
+        display_infoh(w, h);
+        display_actionsh(w, h);
+        orientationh = 1;
     }
     display_text(w, h);
     display_ID(w, h);
@@ -101,30 +104,84 @@ function display_infow(w, h) {
     }
 }
 
-function display_info(w, h) {
-    //display read only info
+function display_infoh(w, h) {
+    //display possible actions
     rectMode(CENTER);
     strokeWeight(1);
     stroke("#000000");
+    textSize(15);
     fill("#FFFFFF");
-    for(i = 1; i < 16; i+=2) {
-        rect(w/4, h*i/16, w/2, h/8);
-        rect(w*3/4, h*i/16, w/2, h/8);
+    for (i = 0; i<2; i++) {
+        for (j = 0; j < 3; j++) {
+            fill("#CCCCCC");
+            rect(w*(2*i+1)/4, h*(j+1)/16+h/20, w/3, h/18, w/70);
+            fill("#000000");
+            textAlign(CENTER, CENTER);
+            textSize(12);
+            if (i == 0){
+                text(infot[j], w*(2*i+1)/4, h*(j+1)/16+h/20);
+            } else {
+                text(infop[j], w*(2*i+1)/4, h*(j+1)/16+h/20);
+            }
+        }
     }
+    textSize(30);
 }
 
 
-function display_actions(w, h, orientation) {
-    //display possible actions
-    if (orientation == 0) {
-        offsetW = w;
-        rectMode(CENTER);
-        strokeWeight(1);
-        stroke("#000000");
-        fill("#FFFFFF");
-        for(i = 1; i < 16; i+=2) {
-            rect(offsetW + w/4, h*i/16, w/2, h/8);
-            rect(offsetW + w*3/4, h*i/16, w/2, h/8);
+function display_actionsh(w, h) {
+    //display read only info
+    rectMode(CENTER);
+    textAlign(CENTER, CENTER);
+    strokeWeight(1);
+    stroke("#000000");
+    fill("#FFFFFF");
+    textSize(30);
+
+    for (i = 0; i<2; i++) {
+        for (j = 0; j < 3; j++) {
+            if(i != 1 || j != 2) {
+                fill("#CCCCCC");
+                if (btns[3*i+j][btns[3*i+j].length-1] == '0' || btns[3*i+j][btns[3*i+j].length-1] == ' ') {
+                    fill("#BBBBBB");
+                } else {
+                    fill("#FFFFFF");
+                }
+                rect(w*(2*i+1)/4, h*(j+1)/16+h*14/20, w/3, h/18, w/70);
+                fill("#000000");
+                textAlign(CENTER, CENTER);
+                textSize(12);
+                text(btns[3*i+j].substring(0, btns[3*i+j].length-1), w*(2*i+1)/4, h*(j+1)/16+h*14/20);
+            } else {
+                offsetColors = 0;
+                for (k = 0; k<4;k++) {
+                    if (k == playerID) {
+                        continue;
+                    } else {
+                        if (btns[3*i+j][offsetColors] == '1') {
+                            if (k == 0) {
+                                fill("rgba(200,12,12, 1)");
+                            }
+                            else if (k == 1) {
+                                fill("rgba(12,100,12,1)");
+                            }
+                            else if (k == 2) {
+                                fill("rgba(200,12,200,1)");
+                            }
+                            else if (k == 3) {
+                                fill("rgba(12,12,200,1)");
+                            }
+                            rect(w*(2*i+1)/4 -w/9 + (offsetColors *w/9), h*(j+1)/16+h*14/20, w/10, h/18, w/70);
+                        } else {
+                            fill("rgba(12,12,12,0.5)");
+                            rect(w*(2*i+1)/4 -w/9 + (offsetColors *w/9), h*(j+1)/16+h*14/20, w/10, h/18, w/70);
+                        }
+
+                        offsetColors += 1;
+                    }
+                }
+                fill("#FFFFFF");
+            }
         }
     }
 }
@@ -164,15 +221,35 @@ function display_ID(w, h) {
 }
 
 function tile_display_buttons() {
-    for(i = 3; i < 14; i+=2) {
-        if (i != 13 && mouseX > w/5- w/10 && mouseX < w/5 + w/10 && mouseY > h*i/16 - h/18 && mouseY < h*i/16 + h/18) {
-            //ith button clicked
-            console.log((i-3)/2);
-            sendData("H" + playerID + "P" + (i-3)/2); //sends button selected to host
-        } else if (i == 13) {
-            for (j =0; j < 3; j++) {
-                if ( mouseX > w/5- w/15 + (j*w/15) - w/32 && mouseX < w/5- w/15 + (j*w/15) + w/32 && mouseY > h*i/16 - h/18 && mouseY < h*i/16 + h/18) {
-                    sendData("H" + playerID + "P" + (i-3)/2+j);
+    if (orientationh == 0) {
+        for(i = 3; i < 14; i+=2) {
+            if (i != 13 && mouseX > w/5- w/10 && mouseX < w/5 + w/10 && mouseY > h*i/16 - h/18 && mouseY < h*i/16 + h/18) {
+                //ith button clicked
+                console.log((i-3)/2);
+                sendData("H" + playerID + "P" + (i-3)/2); //sends button selected to host
+            } else if (i == 13) {
+                for (j =0; j < 3; j++) {
+                    if ( mouseX > w/5- w/15 + (j*w/15) - w/32 && mouseX < w/5- w/15 + (j*w/15) + w/32 && mouseY > h*i/16 - h/18 && mouseY < h*i/16 + h/18) {
+                        sendData("H" + playerID + "P" + (i-3)/2+j);
+                    }
+                }
+            }
+        }
+    } else {
+        for (i = 0; i<2; i++) {
+            for (j = 0; j < 3; j++) {
+                if((i != 1 || j != 2) && mouseX > w*(2*i+1)/4 - w/6 && mouseX < w*(2*i+1)/4 + w/6 && mouseY > h*(j+1)/16+h*14/20 - h/36 && mouseY < h*(j+1)/16+h*14/20 + h/36) {
+                sendData("H" + playerID + "P" + (3*i+j)); //sends button selected to host
+                } else {
+                    for (k = 0; k<3;k++) {
+                        if (k == playerID) {
+                            continue;
+                        } else {
+                            if (mouseX > w*(2*i+1)/4 -w/9 + (k *w/9) - w/20 && mouseX < w*(2*i+1)/4 -w/9 + (k *w/9) + w/20 && mouseY > h*(j+1)/16+h*14/20 - h/36 && mouseY < h*(j+1)/16+h*14/20 + h/36) {
+                                sendData("H" + playerID + "P" + (3*i+j+k));
+                            }
+                        }
+                    }
                 }
             }
         }
