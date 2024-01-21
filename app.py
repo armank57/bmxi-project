@@ -41,7 +41,14 @@ def hostPlaying():
 
 @socketio.on('disconnect')
 def disconnect():
-    clients.remove(request.sid)
+    global host
+    global clients
+    sid = request.sid
+    if host == sid:
+        host == ""
+    else:
+        clients.remove()
+    
 
 # Receive a message from the front end HTML
 @socketio.on('send_message')   
