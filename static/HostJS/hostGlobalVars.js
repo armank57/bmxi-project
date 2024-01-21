@@ -47,6 +47,36 @@ function preload() {
 
 }
 
+function victoryPoints(index) {
+
+    var thePoints = 0
+
+    if (players[index].vp >= 1) {
+        for(row = 0; row < mapSize; row++) {
+            for (col = 0; col < mapSize; col++) {
+                if (ownership[row][col] == index) {
+                    thePoints = thePoints + 1
+                }
+                if (textures[row][col] == 1 && ownership[row][col] == index) {
+                    thePoints = thePoints + 1
+                }
+                if (textures[row][col] == 2 && ownership[row][col] == index) {
+                    thePoints = thePoints + 1
+                }
+                if (textures[row][col] == 3 && ownership[row][col] == index) {
+                    thePoints = thePoints + 1
+                }
+            }
+        }
+        players[index].vp = thePoints
+        thePoints = 0
+    }
+
+    if (players[index].vp >= 50) {
+        printf("Player %d has won!", index);
+    }
+}
+
 
 
 function init() {
@@ -92,12 +122,14 @@ function Player(index, posX, posY) {
     this.fightingPower = 0;
     this.range = 0;
 
-    this.money = 4000;
-    this.food = 30;
+    this.money = 30;
+    this.food = 5;
 
-    this.wood = 39;
-    this.stone = 30;
+    this.wood = 5;
+    this.stone = 5;
     this.iron = 0;
+
+    this.vp = 1
 }
 function generate_map() {
     //corners
@@ -173,8 +205,8 @@ function generate_map() {
         randElement.push(openCoordinates[Math.floor(Math.random() * (openCoordinates.length-1))])
     }
 
-    for (let i = 0; i <= 20; i++) {
-        if (i < 20) {
+    for (let i = 0; i <= 22; i++) {
+        if (i < 22) {
             textures[randElement[i][0]][randElement[i][1]] = 5
             randElement.splice(i, 1)
         }
@@ -200,8 +232,8 @@ function generate_map() {
         randElement.push(openCoordinates[Math.floor(Math.random() * (openCoordinates.length-1))])
     }
 
-    for (let i = 0; i <= 12; i++) {
-        if (i < 12) {
+    for (let i = 0; i <= 15; i++) {
+        if (i < 15) {
             textures[randElement[i][0]][randElement[i][1]] = 6
             randElement.splice(i, 1)
         }
@@ -228,8 +260,8 @@ function generate_map() {
         randElement.push(openCoordinates[Math.floor(Math.random() * (openCoordinates.length-1))])
     }
 
-    for (let i = 0; i <= 12; i++) {
-        if (i < 12) {
+    for (let i = 0; i <= 15; i++) {
+        if (i < 15) {
             textures[randElement[i][0]][randElement[i][1]] = 7
             randElement.splice(i, 1)
         }
