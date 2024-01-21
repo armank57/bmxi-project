@@ -41,7 +41,7 @@ function draw() {
   strokeWeight(1);
   textSize(30);
   textAlign("center", "center");
-  image(logo, w / 2, h / 2, 100, 100);
+  image(logo, w / 2 - 300, h / 4, 600, 200);
   text("Host a Game", w / 2, btnHeight / 2);
   text("Join a Room", w / 2, btnHeight / 2 + 2 * btnHeight);
 
