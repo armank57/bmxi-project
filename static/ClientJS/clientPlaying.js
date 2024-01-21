@@ -135,7 +135,7 @@ function windowResized() {
 
     if (boolAddress != 0) {
         if (inputStr[0] == '@') {
-            console.log(inputStr[1]);
+            playerID = inputStr[1];
         }
         boolAddress = 0;
     }
