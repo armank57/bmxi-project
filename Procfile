@@ -1,1 +1,1 @@
-web: gunicorn app:app
+ heroku app:app web=1
