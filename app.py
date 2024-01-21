@@ -55,7 +55,7 @@ def message_recieved(data):
         clients.append(sid)
         player_num = clients.index(sid)
         if player_num <= 3:
-            emit('message_from_server', {'text': player_num}, to=sid)
+            emit('message_from_server', {'text': "@" + str(player_num)}, to=sid)
         return
     elif text == "newH":
         if host == "":

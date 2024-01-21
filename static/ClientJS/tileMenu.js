@@ -4,6 +4,9 @@ let infop = ["info","for","player"];
 let playerID = 0;
 let serverMessage = "This is a Test Server Message";
 
+let boolAddress = 1;
+let inputStr = "";
+
 function display_menu(w, h) {
     get_client_info(); //updates btns and info
     if (w > h) {

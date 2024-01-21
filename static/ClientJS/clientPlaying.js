@@ -35,6 +35,11 @@ function windowResized() {
     smooth();
     canvas.parent("#sketchContainer");
     sendData("newP")
+    receiveData(function (receivedText) {
+        console.log(receivedText);
+        boolAddress = 1;
+        inputStr = receivedText;
+    });
   }
 
   function draw() {
@@ -126,6 +131,13 @@ function windowResized() {
       fill("#FFFFFF");
       rect(1, 1, w-2, h-2);
       pauseScreen();
+    }
+
+    if (boolAddress != 0) {
+        if (inputStr[0] == '@') {
+            console.log(inputStr[1]);
+        }
+        boolAddress = 0;
     }
   }
 
