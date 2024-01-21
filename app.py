@@ -57,7 +57,7 @@ def disconnect():
         host0 = ""
     elif host1 == sid:
         host1 = ""
-    else
+    else:
         clients0.remove(sid)
         clients1.remove(sid)
 
