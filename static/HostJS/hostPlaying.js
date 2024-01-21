@@ -92,6 +92,9 @@ function windowResized() {
           move_right(inputStr[1]);
           move_down(inputStr[1]);
         }
+        if (int(inputStr[1]) >= 0 && int(inputStr[1]) < 4){
+          buildStr(int(inputStr[1])); //send data back for client
+        }
         boolAddress = 0;
     }
   }

@@ -137,6 +137,40 @@ function windowResized() {
         if (inputStr[0] == '@') {
             playerID = inputStr[1];
         }
+        if (inputStr.length > 3 && inputStr[2] == '[') { //data packet
+          inputStr = inputStr.substring(3);
+          for (i = 0; i < 6; i++) { //get actions
+            if (i != 5) { //don't cut last one
+              btns[i] = inputStr.substring(0, inputStr.indexOf(','));
+              inputStr = inputStr.substring(inputStr.indexOf(',') + 1);
+            } else {
+              btns[i] = inputStr.substring(0, inputStr.indexOf(']'));
+            }
+          }
+          inputStr = inputStr.substring(inputStr.indexOf('[') + 1);
+          for (i = 0; i < 3; i++) { //get info
+            if (i != 2) { //don't cut last one
+              infot[i] = inputStr.substring(0, inputStr.indexOf(','));
+              inputStr = inputStr.substring(inputStr.indexOf(',') + 1);
+            } else {
+              infot[i] = inputStr.substring(0, inputStr.indexOf(']'));
+            }
+          }
+          inputStr = inputStr.substring(inputStr.indexOf(']') + 1);
+
+          inputStr = inputStr.substring(inputStr.indexOf('[') + 1);
+          for (i = 0; i < 3; i++) { //get info
+            if (i != 2) { //don't cut last one
+              infop[i] = inputStr.substring(0, inputStr.indexOf(','));
+              inputStr = inputStr.substring(inputStr.indexOf(',') + 1);
+            } else {
+              infop[i] = inputStr.substring(0, inputStr.indexOf(']'));
+            }
+          }
+          inputStr = inputStr.substring(inputStr.indexOf(']') + 1);
+
+          serverMessage = inputStr;
+        }
         boolAddress = 0;
     }
   }
