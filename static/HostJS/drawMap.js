@@ -9,7 +9,6 @@ function draw_map(w, h) {
 
                 if (textures[row][col] == 5 && ownership[row][col] == 0) {
                     players[0].food = players[0].food + 1;
-
                 } else if (textures[row][col] == 5 && ownership[row][col] == 1) {
                     players[1].food = players[1].food + 1;
                     
