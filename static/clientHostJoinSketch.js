@@ -16,7 +16,7 @@ function windowResized() {
 }
 
 function preload() {
-  logo = loadImage("static/Logo.png");
+  logo = loadImage("static/logo.png");
 }
 
 function setup() {
