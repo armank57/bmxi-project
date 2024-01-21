@@ -144,7 +144,7 @@ function windowResized() {
         attacking = 0;
         return;
       }
-      checkDistance(debugHostSelectedPlayer, target);
+      attack(debugHostSelectedPlayer, target);
       attacking = 0;
       return;
     }
