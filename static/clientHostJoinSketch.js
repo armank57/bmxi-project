@@ -1,4 +1,8 @@
 //CLIENT START
+
+let boolAddress = 1;
+let inputStr = "";
+
 function updateContainer() {
     container = select('#sketchContainer');
   w = parseFloat(getComputedStyle(container.elt).getPropertyValue('width'));
@@ -16,6 +20,12 @@ function windowResized() {
     canvas = createCanvas(w, h);
     smooth();
     canvas.parent("#sketchContainer");
+
+    receiveData(function (receivedText) {
+        console.log(receivedText);
+        boolAddress = 1;
+        inputStr = receivedText;
+  });
   }
 
   function draw() {
@@ -30,15 +40,24 @@ function windowResized() {
     text("Host", w/2, btnHeight/2);
     text("Player", w/2, btnHeight/2 + 2*btnHeight);
 
+    if (boolAddress != 0) {
+        if (inputStr == 'SH') {
+            window.location = "hostPlaying";
+        }
+        else if (inputStr == 'SP') {
+            window.location = "clientPlaying";
+        }
+        boolAddress = 0;
+    }
 
   }
 
   function mouseClicked() {
     btnHeight = 30;
     if (mouseX > 0 && mouseX < w && mouseY > 0 && mouseY < btnHeight) {
-        window.location = "hostPlaying";
+        sendData("newH?")
     }
     if (mouseX > 0 && mouseX < w && mouseY > 2*btnHeight && mouseY < 3*btnHeight) {
-        window.location = "clientPlaying";
+        sendData("newP?")
     }
   }
