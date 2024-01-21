@@ -6,6 +6,7 @@ function draw_map(w, h) {
             let currentTime = int(millis() / 1000);
 
             if (currentTime % 5 == 0 && ! flag) {
+
                 if (textures[row][col] == 5 && ownership[row][col] == 0) {
                     players[0].food = players[0].food + 1;
 

@@ -10,6 +10,14 @@ function calculateDistance(a, b) {
     return Math.sqrt(dx * dx + dy * dy);
 }
 
+function buyTroops(index) {
+    if (players[index].food >= 3 && players[index].money >= 3) {
+        players[index].fightingPower = players[index].fightingPower + 3
+        players[index].food = players[index].food - 3
+        players[index].money = players[index].money - 3
+    }
+}
+
 
 /*
  * @brief Checks if the player is able to attack the target
