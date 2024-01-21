@@ -40,32 +40,39 @@ function windowResized() {
     if (selectionMode == 1) {
         textSize(30);
         rectMode(CORNER);
-        fill("#FFFFFF");
+        fill("#555555");
         rect(1, 1, w-2, h-2);
         //Arrows drawing
         rectMode(CENTER);
         fill("#FFFFFF");
         //center button
+        fill('#121212');
         rect(w/2, h/2, moveBtnSize, moveBtnSize, btnRadius);
         strokeWeight(10);
+        stroke('#FFFFFF');
         circle(w/2, h/2, moveBtnSize-3*btnRadius);
         strokeWeight(1);
+        stroke('#000000');
 
         //sides
+        fill('#121212');
         rect(w/2 + btnDist, h/2, moveBtnSize, moveBtnSize, btnRadius);
         rect(w/2 - btnDist, h/2, moveBtnSize, moveBtnSize, btnRadius);
         rect(w/2, h/2 + btnDist, moveBtnSize, moveBtnSize, btnRadius);
         rect(w/2, h/2 - btnDist, moveBtnSize, moveBtnSize, btnRadius);
 
         //diags
+        fill('#343434');
+        stroke("#343434");
         rect(w/2 + btnDist, h/2 + btnDist, moveBtnSize, moveBtnSize, btnRadius);
         rect(w/2 - btnDist, h/2 + btnDist, moveBtnSize, moveBtnSize, btnRadius);
         rect(w/2 + btnDist, h/2 - btnDist, moveBtnSize, moveBtnSize, btnRadius);
         rect(w/2 - btnDist, h/2 - btnDist, moveBtnSize, moveBtnSize, btnRadius);
-
+        fill('#FFFFFF');
         //arrows
         strokeWeight(10);
-
+        stroke("#FFFFFF");
+        btnRadius *= 1.5;
         // east arrow
         line(w/2 + btnEdge + btnRadius, h/2, w/2 + btnEdge + moveBtnSize - btnRadius, h/2);
         line(w/2 + btnEdge + moveBtnSize - 2 * btnRadius, h/2 - btnRadius, w/2 + btnEdge + moveBtnSize - btnRadius, h/2);
@@ -85,7 +92,10 @@ function windowResized() {
         line(w/2, h/2 - btnEdge - moveBtnSize + btnRadius, w/2 + btnRadius, h/2 - btnEdge - moveBtnSize + 2* btnRadius);
         line(w/2, h/2 - btnEdge - moveBtnSize + btnRadius, w/2 - btnRadius, h/2 - btnEdge - moveBtnSize + 2*btnRadius);
 
+        stroke("#BBBBBB");
+        btnRadius /= 1.5
         // northeast arrow
+        btnRadius *= 2.5;
         line(w/2 + btnEdge + btnRadius, h/2 - btnEdge - btnRadius, w/2 + btnEdge - btnRadius + moveBtnSize, h/2 - btnEdge + btnRadius - moveBtnSize);
         line(w/2 + btnEdge - btnRadius + moveBtnSize, h/2 - btnEdge + btnRadius - moveBtnSize, w/2 + btnEdge - btnRadius + moveBtnSize, h/2 - btnEdge + 2*btnRadius - moveBtnSize);
         line(w/2 + btnEdge - btnRadius + moveBtnSize, h/2 - btnEdge + btnRadius - moveBtnSize, w/2 + btnEdge - 2*btnRadius + moveBtnSize, h/2 - btnEdge + btnRadius - moveBtnSize);
@@ -105,6 +115,8 @@ function windowResized() {
         line(w/2 + btnEdge - btnRadius + moveBtnSize, h/2 + btnEdge - btnRadius + moveBtnSize, w/2 + btnEdge - btnRadius + moveBtnSize, h/2 + btnEdge - 2*btnRadius + moveBtnSize);
         line(w/2 + btnEdge - btnRadius + moveBtnSize, h/2 + btnEdge - btnRadius + moveBtnSize, w/2 + btnEdge - 2*btnRadius + moveBtnSize, h/2 + btnEdge - btnRadius + moveBtnSize);
         strokeWeight(1);
+        btnRadius /= 2.5;
+        stroke("#000000");
 
         display_menu(w, h);
     } else if (selectionMode == -1) {
