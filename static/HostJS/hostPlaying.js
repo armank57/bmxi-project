@@ -6,6 +6,7 @@
 let btnSize;
 let pause = -5;
 let attacking = 0;
+let introMusic;
 
 function updateContainer() {
     container = select('#sketchContainer');
@@ -34,6 +35,8 @@ function windowResized() {
   }
   
   function setup() {
+    soundFormats('mp3')
+    introMusic = loadSound('static/HostJS/audio/intro.mp3')
     init();
     updateContainer();
     canvas = createCanvas(wa, ha);
@@ -145,6 +148,10 @@ function windowResized() {
   }
 
   function mouseClicked() {
+      if (!introMusic.isPlaying()) {
+        // .isPlaying() returns a boolean
+        introMusic.play();
+      }
     if (pause == -5) {
       btnHeight = 30;
       if (mouseX > 0 && mouseX < w && mouseY > 0 && mouseY < btnHeight) {
