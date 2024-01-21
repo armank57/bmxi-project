@@ -52,18 +52,18 @@ function victoryPoints(index) {
     var thePoints = 0
 
     if (players[index].vp >= 1) {
-        for(row = 0; row < mapSize; row++) {
-            for (col = 0; col < mapSize; col++) {
-                if (ownership[row][col] == index) {
+        for(ro = 0; ro < mapSize; ro++) {
+            for (co = 0; co < mapSize; co++) {
+                if (ownership[ro][co] == index) {
                     thePoints = thePoints + 1
                 }
-                if (textures[row][col] == 1 && ownership[row][col] == index) {
+                if (textures[ro][co] == 1 && ownership[ro][co] == index) {
                     thePoints = thePoints + 1
                 }
-                if (textures[row][col] == 2 && ownership[row][col] == index) {
+                if (textures[ro][co] == 2 && ownership[ro][co] == index) {
                     thePoints = thePoints + 1
                 }
-                if (textures[row][col] == 3 && ownership[row][col] == index) {
+                if (textures[ro][co] == 3 && ownership[ro][co] == index) {
                     thePoints = thePoints + 1
                 }
             }
