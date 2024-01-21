@@ -19,6 +19,8 @@ let tileCost = 5;
 let boolAddress = 1;
 let inputStr = "";
 
+let buildingIMG;
+
 function time() {
     
 }

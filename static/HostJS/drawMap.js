@@ -1,5 +1,3 @@
-
-
 function draw_map(w, h) {
     for(row = 0; row < mapSize; row++) {
         for (col = 0; col < mapSize; col++) {
@@ -15,8 +13,7 @@ function draw_map(w, h) {
             else if (textures[row][col] == 1) { //building 1 (farm)
                 console.log("building");
                 rectMode(CORNER);
-                fill("#CCCC12");
-                stroke("#121212");
+                texture(buildingIMG);
                 rect(w*col/mapSize, h*row/mapSize, w/mapSize, h/mapSize);
                 if (ownership[row][col] == 0) {
                     fill("rgba(200,12,12, 1)");
