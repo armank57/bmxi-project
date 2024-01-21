@@ -64,3 +64,35 @@ function build_player(index) {
     returnStr += " Iron: " + players[index].iron + "]";
     return returnStr;
 }
+
+function perform_action(index, action) {
+    console.log("performed");
+    x = players[index].x;
+    y = players[index].y;
+    if (textures[y][x] == -2) { //bridge
+        returnStr += "Claim0,"; //can't claim bridge
+        if (action == 0) {
+            buy_tile(index);
+            return;
+        }
+        returnStr += "Make Bridge"; //make bridge
+        if (check_buy_bridge(index)) {
+            returnStr += "1,";
+        } else {
+            returnStr += "0,";
+        }
+        returnStr += " , , ,"; 
+    } else if (textures[y][x] == 0) {
+        returnStr += "Claim"; //claim empty
+        if (action == 0) {
+            buy_tile(index);
+            return;
+        }
+        if (check_buy_tile(index)) { //check if can buy
+            returnStr += "1,";
+        } else {
+            returnStr += "0,";
+        }
+        returnStr += " , , , ,"; 
+    }
+}

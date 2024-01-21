@@ -91,6 +91,9 @@ function windowResized() {
         else if (inputStr[2] == 'C') {
           move_right(inputStr[1]);
           move_down(inputStr[1]);
+        } else if (inputStr[2] == 'P'){
+          console.log("action");
+          perform_action(int(inputStr[1]), int(inputStr[3]));
         }
         if (int(inputStr[1]) >= 0 && int(inputStr[1]) < 4){
           buildStr(int(inputStr[1])); //send data back for client
