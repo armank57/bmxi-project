@@ -36,8 +36,8 @@ function draw() {
   btnHeight = 30;
   btnRadius = 10;
   fill('#FFFFFF');
-  rect(w/2 - 100, h / 2 + 2*btnHeight, w/2 + 100, btnHeight, btnRadius);
-  rect(w/2 - 100, h / 2, w/2 + 100, btnHeight, btnRadius);
+  rect(w/2 - 125, h / 2 + 2*btnHeight, 250, btnHeight, btnRadius);
+  rect(w/2 - 125, h / 2, 250, btnHeight, btnRadius);
   fill('#121212');
   strokeWeight(1);
   textSize(30);
@@ -60,11 +60,11 @@ function draw() {
 
   function mouseClicked() {
     btnHeight = 30;
-    if (mouseX > 0 && mouseX < w && mouseY > 0 && mouseY < btnHeight) {
+    if (mouseX > (w/2 - 125) && mouseX < (w/2 + 125) && mouseY > (h/2) && mouseY < (h/2 + btnHeight)) {
       window.location = "/hostPlaying"
         //sendData("newH?")
     }
-    if (mouseX > 0 && mouseX < w && mouseY > 2*btnHeight && mouseY < 3*btnHeight) {
+    if (mouseX > (w/2 - 125) && mouseX < (w/2 + 125) && mouseY > h/2 + 2*btnHeight && mouseY < (h/2 + 3 * btnHeight)) {
         window.location = "/clientPlaying"//sendData("newP?")
     }
   }
