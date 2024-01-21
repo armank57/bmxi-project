@@ -42,8 +42,8 @@ function draw() {
   textSize(30);
   textAlign("center", "center");
   image(logo, w / 2 - 300, h / 16, 600, 200);
-  text("Host a Game", w / 2, h / 2);
-  text("Join a Room", w / 2, h / 2 + 2 * btnHeight);
+  text("Host a Game", w / 2, h / 2 + btnHeight);
+  text("Join a Room", w / 2, h / 2 + 3 * btnHeight);
 
   if (boolAddress != 0) {
     if (inputStr == 'SH') {
