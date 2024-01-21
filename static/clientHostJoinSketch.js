@@ -34,16 +34,17 @@ function setup() {
 
 function draw() {
   btnHeight = 30;
+  btnRadius = 10;
   fill('#FFFFFF');
-  rect(0, h / 2 + 2*btnHeight, w, btnHeight);
-  rect(0, h / 2, w, btnHeight);
+  rect(w/2 - 100, h / 2 + 2*btnHeight, w/2 + 100, btnHeight, btnRadius);
+  rect(w/2 - 100, h / 2, w/2 + 100, btnHeight, btnRadius);
   fill('#121212');
   strokeWeight(1);
   textSize(30);
   textAlign("center", "center");
   image(logo, w / 2 - 300, h / 16, 600, 200);
-  text("Host a Game", w / 2, h / 2 + btnHeight);
-  text("Join a Room", w / 2, h / 2 + 3 * btnHeight);
+  text("Host a Game", w / 2, h / 2 + 0.5 * btnHeight);
+  text("Join a Room", w / 2, h / 2 + 2.5 * btnHeight);
 
   if (boolAddress != 0) {
     if (inputStr == 'SH') {
