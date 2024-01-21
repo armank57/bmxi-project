@@ -168,7 +168,7 @@ function tile_display_buttons() {
         if (mouseX > w/5- w/10 && mouseX < w/5 + w/10 && mouseY > h*i/16 - h/18 && mouseY < h*i/16 + h/18) {
             //ith button clicked
             console.log((i-3)/2);
-            sendData("C" + playerID + "P" + (i-3)/2); //sends button selected to host
+            sendData("H" + playerID + "P" + (i-3)/2); //sends button selected to host
         }
     }
 
