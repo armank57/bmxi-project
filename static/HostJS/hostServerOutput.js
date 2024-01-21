@@ -207,7 +207,7 @@ function build_info(index) {
     if (textures[y][x] == -2) {
         returnStr += "Bridge,This Goes Over Water,Don't Drown";
     } else if (textures[y][x] == 0) {
-        returnStr += "Empty,Desert,You Can Claim It";
+        returnStr += "Empty,Desert,Claim Adjacent Tiles";
     } else if (textures[y][x] == 1) {
         returnStr += "Farm,Higher Efficiency,+2 food";
     } else if (textures[y][x] == 2) {
@@ -223,7 +223,7 @@ function build_info(index) {
     } else if (textures[y][x] == 10) {
         returnStr += "Center,power ups in the future,TODO";
     } else if (textures[y][x] == -3) {
-        returnStr += "Trading Post,Trade Stuff,Talk to Others";
+        returnStr += "Trading Post,Use Circle Button,Talk to Others";
     } else {
         returnStr += "TODO,y,n";
     }

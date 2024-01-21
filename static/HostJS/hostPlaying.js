@@ -47,9 +47,6 @@ function windowResized() {
   });
   }
 
-function preload() {
-  buldingIMG = loadImage('static/HostJS/building.png');
-}
 
   function draw() {
     fill('#FFFFFF');

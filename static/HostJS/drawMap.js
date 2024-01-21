@@ -88,6 +88,9 @@ function draw_map(w, h) {
 
                 if (col == mapSize - 1 && row == mapSize - 1) {
                     flag = true
+                    for (k = 0; k< 4;k++) {
+                        buildStr(k);
+                    }
                 }
             } else if (currentTime % 5 != 0) {
                 flag = false;
@@ -103,7 +106,8 @@ function draw_map(w, h) {
             else if (textures[row][col] == 1) { //building 1 (farm)
                 console.log("building");
                 rectMode(CORNER);
-                texture(buildingIMG);
+                fill("#CCCC12");
+                stroke("#121212");
                 rect(w*col/mapSize, h*row/mapSize, w/mapSize, h/mapSize);
                 if (ownership[row][col] == 0) {
                     fill("rgba(200,12,12, 1)");
