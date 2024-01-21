@@ -15,6 +15,9 @@ let buildThreeCost = 300;
 let brigdeCost = 10;
 let tileCost = 5;
 
+let boolAddress = 1;
+let inputStr = "";
+
 function init() {
     players[0] = new Player(0, int(mapSize/2), 1);
     players[1] = new Player(1, 1, int(mapSize/2));

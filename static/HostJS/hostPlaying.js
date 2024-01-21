@@ -41,6 +41,8 @@ function windowResized() {
     canvas.parent("#sketchContainer");
     receiveData(function (receivedText) {
         console.log(receivedText);
+        boolAddress = 1;
+        inputStr = receivedText;
   });
   }
 
@@ -59,6 +61,21 @@ function windowResized() {
       pauseScreen();
     } else {
       draw_settings_screen();
+    }
+    if (boolAddress != 0) {
+        if (inputStr[2] == 'U') {
+            move_up(inputStr[1]);
+        }
+        else if (inputStr[2] == 'L') {
+            move_left(inputStr[1]);
+        }
+        else if (inputStr[2] == 'B') {
+            move_down(inputStr[1]);
+        }
+        else if (inputStr[2] == 'R') {
+            move_right(inputStr[1]);
+        }
+        boolAddress = 0;
     }
   }
 

@@ -169,49 +169,49 @@ function windowResized() {
                 && mouseY > h/2 - btnSpace && mouseY < h/2 + btnSpace) {
             //right button
             console.log("Right");
-            sendData("C" + playerID + "R");
+            sendData("H" + playerID + "R");
         }
         if (mouseX > w/2 - btnSpace - btnDist && mouseX < w/2 + btnSpace - btnDist 
                 && mouseY > h/2 - btnSpace && mouseY < h/2 + btnSpace) {
             //left button
             console.log("Left");
-            sendData("C" + playerID + "L");
+            sendData("H" + playerID + "L");
         }
         if (mouseX > w/2 - btnSpace && mouseX < w/2 + btnSpace 
                 && mouseY > h/2 - btnSpace - btnDist && mouseY < h/2 + btnSpace - btnDist) {
             //top button
             console.log("Top");
-            sendData("C" + playerID + "U");
+            sendData("H" + playerID + "U");
         }
         if (mouseX > w/2 - btnSpace && mouseX < w/2 + btnSpace 
                 && mouseY > h/2 - btnSpace + btnDist && mouseY < h/2 + btnSpace + btnDist) {
             //bottom button
             console.log("Bottom");
-            sendData("C" + playerID + "B");
+            sendData("H" + playerID + "B");
         }
         if (mouseX > w/2 - btnSpace - btnDist && mouseX < w/2 + btnSpace - btnDist 
                 && mouseY > h/2 - btnSpace - btnDist && mouseY < h/2 + btnSpace - btnDist) {
             //top left button
             console.log("Top left");
-            sendData("C" + playerID + "Q");
+            sendData("H" + playerID + "Q");
         }
         if (mouseX > w/2 - btnSpace + btnDist && mouseX < w/2 + btnSpace + btnDist 
                 && mouseY > h/2 - btnSpace - btnDist && mouseY < h/2 + btnSpace - btnDist) {
             //top right button
             console.log("Top right");
-            sendData("C" + playerID + "E");
+            sendData("H" + playerID + "E");
         }
         if (mouseX > w/2 - btnSpace + btnDist && mouseX < w/2 + btnSpace + btnDist 
                 && mouseY > h/2 - btnSpace + btnDist && mouseY < h/2 + btnSpace + btnDist) {
             //bottom right button
             console.log("Bottom right");
-            sendData("C" + playerID + "C");
+            sendData("H" + playerID + "C");
         }
         if (mouseX > w/2 - btnSpace - btnDist && mouseX < w/2 + btnSpace - btnDist 
                 && mouseY > h/2 - btnSpace + btnDist && mouseY < h/2 + btnSpace + btnDist) {
             //bottom left button
             console.log("Bottom left");
-            sendData("C" + playerID + "Z");
+            sendData("H" + playerID + "Z");
         }
     } else if (selectionMode == -1) {
       if (mouseX > w/6 - w/8 && mouseX < w/6 + w/8 && mouseY > h/2 - h/10 && mouseY < h/2 + h/10) {
