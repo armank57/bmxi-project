@@ -3,6 +3,7 @@ var flag = false;
 function draw_map(w, h) {
     for(row = 0; row < mapSize; row++) {
         for (col = 0; col < mapSize; col++) {
+            
             let currentTime = int(millis() / 1000);
 
             if (currentTime % 5 == 0 && ! flag) {
@@ -94,6 +95,9 @@ function draw_map(w, h) {
                 }
             } else if (currentTime % 5 != 0) {
                 flag = false;
+            }
+            if (col == 25) {
+                console.log(col);
             }
             if (textures[row][col] == 0) {
                 rectMode(CORNER);

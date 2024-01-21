@@ -158,8 +158,8 @@ function windowResized() {
 
     if (boolAddress != 0) {
         
-        if (inputStr.length > 3 && inputStr[3] == '[') { //data packet
-          inputStr = inputStr.substring(3);
+        if (inputStr.length > 3 && inputStr[4] == '[') { //data packet
+          inputStr = inputStr.substring(4);
           for (i = 0; i < 6; i++) { //get actions
             if (i != 5) { //don't cut last one
               btns[i] = inputStr.substring(0, inputStr.indexOf(','));
