@@ -5,7 +5,7 @@ $(document).ready(function () {
     socket = io("localhost:5000", {
         transports: ["websocket"],
         cors: {
-            origin: "localhost:3000",
+            origin: "localhost1:3000",
         },
     });
 });

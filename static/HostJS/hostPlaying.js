@@ -39,6 +39,9 @@ function windowResized() {
     canvas = createCanvas(wa, ha);
     smooth();
     canvas.parent("#sketchContainer");
+    receiveData(function (receivedText) {
+        console.log(receivedText);
+  });
   }
 
   function draw() {
