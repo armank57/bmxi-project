@@ -15,6 +15,10 @@ function windowResized() {
   drawing = true;
 }
 
+function preload() {
+  logo = loadImage("static/images/Logo.png");
+}
+
 function setup() {
   updateContainer();
   canvas = createCanvas(w, h);
@@ -37,7 +41,7 @@ function draw() {
   strokeWeight(1);
   textSize(30);
   textAlign("center", "center");
-  image("static/images/Logo.png", w / 2, h / 2, 100, 100);
+  image(logo, w / 2, h / 2, 100, 100);
   text("Host a Game", w / 2, btnHeight / 2);
   text("Join a Room", w / 2, btnHeight / 2 + 2 * btnHeight);
 
