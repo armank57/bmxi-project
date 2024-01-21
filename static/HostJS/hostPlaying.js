@@ -75,6 +75,22 @@ function windowResized() {
         else if (inputStr[2] == 'R') {
             move_right(inputStr[1]);
         }
+        else if (inputStr[2] == 'Q') {
+          move_left(inputStr[1]);
+          move_up(inputStr[1]);
+        }
+        else if (inputStr[2] == 'E') {
+          move_right(inputStr[1]);
+          move_up(inputStr[1]);
+        }
+        else if (inputStr[2] == 'Z') {
+          move_left(inputStr[1]);
+          move_down(inputStr[1]);
+        }
+        else if (inputStr[2] == 'C') {
+          move_right(inputStr[1]);
+          move_down(inputStr[1]);
+        }
         boolAddress = 0;
     }
   }
