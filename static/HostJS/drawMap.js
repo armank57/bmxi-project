@@ -1,9 +1,98 @@
-
+var flag = false;
 
 function draw_map(w, h) {
     for(row = 0; row < mapSize; row++) {
         for (col = 0; col < mapSize; col++) {
-    
+            let currentTime = int(millis() / 1000);
+
+            if (currentTime % 5 == 0 && ! flag) {
+
+                if (textures[row][col] == 5 && ownership[row][col] == 0) {
+                    players[0].food = players[0].food + 1;
+
+                } else if (textures[row][col] == 5 && ownership[row][col] == 1) {
+                    players[1].food = players[1].food + 1;
+                    
+                } else if (textures[row][col] == 5 && ownership[row][col] == 2) {
+                    players[2].food = players[2].food + 1;
+                    
+                } else if (textures[row][col] == 5 && ownership[row][col] == 3) {
+                    players[3].food = players[3].food + 1;
+                }
+
+                if (textures[row][col] == 6 && ownership[row][col] == 0) {
+                    players[0].wood = players[0].wood + 1;
+
+                } else if (textures[row][col] == 6 && ownership[row][col] == 1) {
+                    players[1].wood = players[1].wood + 1;
+                    
+                } else if (textures[row][col] == 6 && ownership[row][col] == 2) {
+                    players[2].wood = players[2].wood + 1;
+                    
+                } else if (textures[row][col] == 6 && ownership[row][col] == 3) {
+                    players[3].wood = players[3].wood + 1;
+                }
+
+                if (textures[row][col] == 7 && ownership[row][col] == 0) {
+                    players[0].stone = players[0].stone + 1;
+
+                } else if (textures[row][col] == 7 && ownership[row][col] == 1) {
+                    players[1].stone = players[1].stone + 1;
+                    
+                } else if (textures[row][col] == 7 && ownership[row][col] == 2) {
+                    players[2].stone = players[2].stone + 1;
+                    
+                } else if (textures[row][col] == 7 && ownership[row][col] == 3) {
+                    players[3].stone = players[3].stone + 1;
+                }
+
+
+
+                if (textures[row][col] == 1 && ownership[row][col] == 0) {
+                    players[0].food = players[0].food + 2;
+
+                } else if (textures[row][col] == 1 && ownership[row][col] == 1) {
+                    players[1].food = players[1].food + 2;
+                    
+                } else if (textures[row][col] == 1 && ownership[row][col] == 2) {
+                    players[2].food = players[2].food + 2;
+                    
+                } else if (textures[row][col] == 1 && ownership[row][col] == 3) {
+                    players[3].food = players[3].food + 2;
+                }
+
+                if (textures[row][col] == 3 && ownership[row][col] == 0) {
+                    players[0].wood = players[0].wood + 2;
+
+                } else if (textures[row][col] == 3 && ownership[row][col] == 1) {
+                    players[1].wood = players[1].wood + 2;
+                    
+                } else if (textures[row][col] == 3 && ownership[row][col] == 2) {
+                    players[2].wood = players[2].wood + 2;
+                    
+                } else if (textures[row][col] == 3 && ownership[row][col] == 3) {
+                    players[3].wood = players[3].wood + 2;
+                }
+
+                if (textures[row][col] == 2 && ownership[row][col] == 0) {
+                    players[0].stone = players[0].stone + 2;
+
+                } else if (textures[row][col] == 2 && ownership[row][col] == 1) {
+                    players[1].stone = players[1].stone + 2;
+                    
+                } else if (textures[row][col] == 2 && ownership[row][col] == 2) {
+                    players[2].stone = players[2].stone + 2;
+                    
+                } else if (textures[row][col] == 2 && ownership[row][col] == 3) {
+                    players[3].stone = players[3].stone + 2;
+                }
+
+
+
+                flag = true
+            } else if (currentTime % 5 != 0) {
+                flag = false;
+            }
             if (textures[row][col] == 0) {
                 rectMode(CORNER);
                 fill("#CCCCCC");

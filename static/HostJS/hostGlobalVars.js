@@ -20,9 +20,8 @@ let tileCost = 5;
 let boolAddress = 1;
 let inputStr = "";
 
-function time() {
-    
-}
+
+
 
 function init() {
     players[0] = new Player(0, 3, 3);
