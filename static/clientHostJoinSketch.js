@@ -48,7 +48,7 @@ function draw() {
   image(logo, w / 2 - 300, h / 16, 600, 200);
   text("Host a Game", w / 2, h / 2 + 0.5 * btnHeight);
   text("Join a Room", w / 2, h / 2 + 2.5 * btnHeight);
-  text("How to Play", w / 2, h / 2 + 4 * btnHeight);
+  text("How to Play", w / 2, h / 2 + 4.5 * btnHeight);
 
   if (boolAddress != 0) {
     if (inputStr == 'SH') {
