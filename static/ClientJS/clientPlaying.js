@@ -209,7 +209,7 @@ function windowResized() {
                 && mouseY > h/2 - btnSpace && mouseY < h/2 + btnSpace) {
             //center button
             console.log("Center");
-            sendData("H");
+            sendData("H" + playerID + "Y");
             //selectionMode = test_action();
         }
         if (mouseX > w/2 - btnSpace + btnDist && mouseX < w/2 + btnSpace + btnDist 

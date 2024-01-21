@@ -296,3 +296,13 @@ function check_buy_bridge(index) {
 
     return false;
 }
+
+function sell_stuff(index) {
+    players[index].money += players[index].wood *4 + players[index].stone*4 + players[index].food*4;
+    players[index].food = 0;
+    players[index].wood = 0;
+    players[index].stone = 0;
+    if (int(inputStr[1]) >= 0 && int(inputStr[1]) < 4){
+        buildStr(int(inputStr[1])); //send data back for client
+    }
+}

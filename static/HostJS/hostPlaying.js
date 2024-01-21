@@ -58,7 +58,6 @@ function preload() {
     strokeWeight(1);
     textSize(30);
     textAlign("center", "center");
-    text("PLACEHOLDER", w/2, h/2);
     if (pause == 0) {
       draw_map(w, h);
       draw_money(w,h, offsetw, offseth);
@@ -101,6 +100,9 @@ function preload() {
         }
         if (int(inputStr[1]) >= 0 && int(inputStr[1]) < 4){
           buildStr(int(inputStr[1])); //send data back for client
+        }
+        if (inputStr[2] == 'Y' && int(inputStr[1]) >= 0 && int(inputStr[1]) < 4 && textures[players[inputStr[1]].y][players[inputStr[1]].x] == -3) {
+          sell_stuff(inputStr[1]);
         }
         boolAddress = 0;
     }
