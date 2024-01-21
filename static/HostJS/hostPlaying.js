@@ -65,6 +65,7 @@ function windowResized() {
       console.log(inputStr);
       if (inputStr[0] == 'S') {
         pause = 0;
+        roomNum = int(inputStr[2]);
       }
       boolAddress = 0;
     }
@@ -118,7 +119,7 @@ function windowResized() {
           move_down(inputStr[1]);
         } else if (inputStr[3] == 'P'){
           console.log("action");
-          perform_action(int(inputStr[1]), int(inputStr[3]));
+          perform_action(int(inputStr[1]), int(inputStr[4]));
         }
         if (int(inputStr[1]) >= 0 && int(inputStr[1]) < 4){
           buildStr(int(inputStr[1]), int(inputStr[2])); //send data back for client

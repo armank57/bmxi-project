@@ -258,6 +258,7 @@ function perform_action(index, action) {
             }
         }
     } else if (textures[y][x] == 0) { //empty
+        console.log("got here");
         if (action == 0 && check_buy_tile(index)) {
             buy_tile(index);
             return;
