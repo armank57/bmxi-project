@@ -178,14 +178,20 @@ function windowResized() {
     if (keyCode == 65 && pause != 1) {
       attacking = 1;
     }
-    if (keyCode == 66 && pause != 1) {
-      buy_building_one(debugHostSelectedPlayer);
-    }
     if (keyCode == 86 && pause != 1) {
       buy_bridge(debugHostSelectedPlayer);
     }
     // changed by matthew
-    if (keyCode == 77 && pause != 1) {
+    if (keyCode == 77 && pause != 1) { // (m)
       buy_tile(debugHostSelectedPlayer);
+    }
+    if (keyCode == 75 && pause != 1) { // (k) (farms)
+      buy_building_one(debugHostSelectedPlayer);
+    }
+    if (keyCode == 72 && pause != 1) { // (h) (mines)
+      buy_building_two(debugHostSelectedPlayer);
+    }
+    if (keyCode == 74 && pause != 1) { // (j) (lumbermills)
+      buy_building_three(debugHostSelectedPlayer);
     }
   }
