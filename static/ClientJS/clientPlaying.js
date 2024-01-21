@@ -34,6 +34,7 @@ function windowResized() {
     canvas = createCanvas(w, h);
     smooth();
     canvas.parent("#sketchContainer");
+    sendData("newP")
   }
 
   function draw() {

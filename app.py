@@ -22,7 +22,9 @@ def clientLoading():
     return render_template('clientLoading.html')
 
 @app.route('/clientPlaying')
-def clientPlaying():    
+def clientPlaying():
+    if len(clients) >= 4:
+        return render_template('clientHostJoin.html')
     return render_template('clientPlaying.html')
 
 @app.route('/hostJoin')
@@ -51,11 +53,9 @@ def message_recieved(data):
     if text == "newP":
         sid = request.sid
         clients.append(sid)
-        player_num = client.index(sid)
+        player_num = clients.index(sid)
         if player_num <= 3:
             emit('message_from_server', {'text': player_num}, to=sid)
-        else:
-            emit('message_from_server', {'text': "E"}, to=sid)
         return
     elif text == "newH":
         if host == "":
