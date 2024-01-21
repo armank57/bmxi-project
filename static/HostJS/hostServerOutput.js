@@ -29,7 +29,17 @@ function build_actions(index) {
         } else {
             returnStr += "0,";
         }
-        returnStr += " , , , ,"; 
+        returnStr += "Make Bridge"; //make bridge
+        if (check_buy_bridge(index)) {
+            returnStr += "1,";
+        } else {
+            returnStr += "0,";
+        }
+        returnStr += " , , ,"; 
+    } else if (textures[y][x] == 1) {
+    } else if (textures[y][x] == 2) {
+    } else if (textures[y][x] == 3) {
+    } else if (textures[y][x] == 4) {
     }
 
     returnStr += "000]"; //implement attack later each is different color
@@ -63,4 +73,29 @@ function build_player(index) {
     returnStr += " Stone: " + players[index].stone;
     returnStr += " Iron: " + players[index].iron + "]";
     return returnStr;
+}
+
+function perform_action(index, action) {
+    console.log("performed");
+    x = players[index].x;
+    y = players[index].y;
+    if (textures[y][x] == -2) { //bridge
+        if (check_buy_bridge(index)) {
+            if(action == 1) {
+                buy_bridge(index);
+                return;
+            }
+        }
+    } else if (textures[y][x] == 0) { //empty
+        if (action == 0) {
+            buy_tile(index);
+            return;
+        }
+        if (check_buy_bridge(index)) {
+            if(action == 1) {
+                buy_bridge(index);
+                return;
+            }
+        }
+    }
 }
