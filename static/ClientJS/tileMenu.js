@@ -1,6 +1,8 @@
 let btns = ["a", "b", "c", "d", "e", "f"];
 let infot = ["info", "for", "tile"];
 let infop = ["info","for","player"];
+let playerID = 0;
+let serverMessage = "Test";
 
 function display_menu(w, h) {
     get_client_info(); //updates btns and info
@@ -83,11 +85,23 @@ function display_actions(w, h, orientation) {
     }
 }
 
+
+function display_text(w, h) {
+    rectMode(CENTER);
+    textAlign(CENTER, CENTER);
+    strokeWeight(1);
+    stroke("#000000");
+    fill("#FFFFFF");
+    text(serverMessage);
+    fill("#FFFFFF");
+}
+
 function tile_display_buttons() {
     for(i = 3; i < 14; i+=2) {
         if (mouseX > w/5- w/10 && mouseX < w/5 + w/10 && mouseY > h*i/16 - h/18 && mouseY < h*i/16 + h/18) {
             //ith button clicked
             console.log((i-3)/2);
+            sendData("C" + playerID + "P" + (i-3)/2); //sends button selected to host
         }
     }
 
