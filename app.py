@@ -33,13 +33,21 @@ def hostJoin():
 def hostPlaying():    
     return render_template('hostPlaying.html')
 
+@socketio.on('connect')
+def connect():
+    global host
+    if host == "":
+        host = request.sid
+        print(host)
+
 @socketio.on('disconnect')
-def connected():
+def disconnect():
     clients.remove(request.sid)
 
 # Receive a message from the front end HTML
 @socketio.on('send_message')   
 def message_recieved(data):
+    global host
     text = data['text']
     print(text)
 
@@ -62,6 +70,7 @@ def message_recieved(data):
 
     if text[0] == 'H':
         emit('message_from_server', {'text': text}, to=host)
+        print(host + "sent")
         return
 
     elif text[0] == 'C':
