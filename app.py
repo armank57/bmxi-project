@@ -71,4 +71,4 @@ def message_recieved(data):
         emit('message_from_server', {'text': text}, to=clients[int(text[1])])
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    app.run(host='0.0.0.0')
