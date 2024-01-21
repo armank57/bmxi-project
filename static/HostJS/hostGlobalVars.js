@@ -9,14 +9,19 @@ let ownership = Array(mapSize).fill(null).map(()=>Array(mapSize).fill(-1));
 let players = Array(playerCount).fill(Player);
 let debugHostSelectedPlayer = 0;
 
-let buildOneCost = 100;
-let buildTwoCost = 200;
-let buildThreeCost = 300;
+let buildOneCost = 100; //farm
+let buildTwoCost = 200; // lumbermill
+let buildThreeCost = 300; //mine
+
 let brigdeCost = 10;
 let tileCost = 5;
 
 let boolAddress = 1;
 let inputStr = "";
+
+function time() {
+    
+}
 
 function init() {
     players[0] = new Player(0, 3, 3);
@@ -61,18 +66,16 @@ function Player(index, posX, posY) {
     this.fightingPower = 0;
     this.range = 0;
 
-    this.money = 1000;
+    this.money = 4000;
     this.food = 0;
 
     this.wood = 0;
     this.stone = 0;
     this.iron = 0;
-    this.wheat = 0;
-    this.fish = 0;
-    this.cattle = 0;
 }
 function generate_map() {
     //corners
+
     textures[0][0] = -3
     textures[mapSize-1][0] = -3
     textures[0][mapSize-1] = -3
@@ -110,12 +113,106 @@ function generate_map() {
         textures[ms+centerSize][ms+i] = -1;
     }
 
-    //testing stuff for matthew
+    ownership[13][13] = 10
+    ownership[12][12] = 10
+    ownership[11][11] = 10
+    ownership[13][12] = 10
+    ownership[13][11] = 10
+    ownership[12][13] = 10
+    ownership[11][12] = 10
+    ownership[12][11] = 10
+    ownership[11][13] = 10
 
+    
+    // starting squares 
     ownership[3][3] = 0
     ownership[mapSize-4][3] = 1
     ownership[3][mapSize-4] = 2
     ownership[mapSize-4][mapSize-4] = 3
+    
+    //food
+    var openCoordinates = []
+
+    for (let i = 0; i < mapSize; i++) {
+        for (let j = 0; j < mapSize; j++) {
+            if (textures[i][j] == 0) {
+                openCoordinates.push([[i], [j]])
+            }
+        }
+    }
+    var randElement = []
+
+    for (let i = 0; i < openCoordinates.length; i++) {
+        randElement.push(openCoordinates[Math.floor(Math.random() * (openCoordinates.length-1))])
+    }
+
+    for (let i = 0; i <= 20; i++) {
+        if (i < 20) {
+            textures[randElement[i][0]][randElement[i][1]] = 5
+            randElement.splice(i, 1)
+        }
+    }
+
+
+
+
+    //wood
+    var openCoordinates = []
+
+    for (let i = 0; i < mapSize; i++) {
+        for (let j = 0; j < mapSize; j++) {
+            if (textures[i][j] == 0) {
+                openCoordinates.push([[i], [j]])
+            }
+        }
+    }
+
+    var randElement = []
+
+    for (let i = 0; i < openCoordinates.length; i++) {
+        randElement.push(openCoordinates[Math.floor(Math.random() * (openCoordinates.length-1))])
+    }
+
+    for (let i = 0; i <= 12; i++) {
+        if (i < 12) {
+            textures[randElement[i][0]][randElement[i][1]] = 6
+            randElement.splice(i, 1)
+        }
+    }
+
+
+
+
+
+    //stone
+    var openCoordinates = []
+
+    for (let i = 0; i < mapSize; i++) {
+        for (let j = 0; j < mapSize; j++) {
+            if (textures[i][j] == 0) {
+                openCoordinates.push([[i], [j]])
+            }
+        }
+    }
+
+    var randElement = []
+
+    for (let i = 0; i < openCoordinates.length; i++) {
+        randElement.push(openCoordinates[Math.floor(Math.random() * (openCoordinates.length-1))])
+    }
+
+    for (let i = 0; i <= 12; i++) {
+        if (i < 12) {
+            textures[randElement[i][0]][randElement[i][1]] = 7
+            randElement.splice(i, 1)
+        }
+    }
+    
+    
+    
+    
+    
+    
     
 
 }
