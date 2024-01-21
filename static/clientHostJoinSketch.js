@@ -40,7 +40,8 @@ function draw() {
   rect(w/2 - 125, h / 2, 250, btnHeight, btnRadius);
   fill('#121212');
   strokeWeight(1);
-  textSize(30);
+  textFont('Helvetica');
+  textSize(28);
   textAlign("center", "center");
   image(logo, w / 2 - 300, h / 16, 600, 200);
   text("Host a Game", w / 2, h / 2 + 0.5 * btnHeight);
