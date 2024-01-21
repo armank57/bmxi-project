@@ -1,9 +1,9 @@
-var market = [0, 0, 0, 0];
+var market = [0, 0, 0];
 var sell = false
 var buy = false
 
-// wood = 0, stone = 1, iron = 2, food =3
-
+// wood = 0, stone = 1, food = 2
+/*
 function buyItem(index, item) {
     if (market[0] >= 1 && item == 0 && player[index].money >= 4) {
         if (buy) {
@@ -34,6 +34,7 @@ function buyItem(index, item) {
         }
     }
 }
+*/
 
 function sellItem(index, item){
     if (players[index].wood >= 1 && item == 0) {
@@ -50,14 +51,7 @@ function sellItem(index, item){
             market[1] = market[1] + 1
         }
     }
-    if (players[index].iron >= 1 && item == 2) {
-        if (sell) {
-            players[index].iron = players[index].iron - 1
-            players[index].money = players[index].money + 7
-            market[2] = market[2] + 1
-        }
-    }
-    if (players[index].food >= 1 && item == 3) {
+    if (players[index].food >= 1 && item == 2) {
         if (sell) {
             players[index].food = players[index].food - 1
             players[index].money = players[index].money + 2

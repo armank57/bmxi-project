@@ -97,7 +97,6 @@ function Player(index, posX, posY) {
 
     this.wood = 39;
     this.stone = 30;
-    this.iron = 0;
 }
 function generate_map() {
     //corners
