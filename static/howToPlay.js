@@ -21,5 +21,5 @@ function setup() {
 }
 
 function draw() {
-    image(rules, w/4, h/8, w/2, h/1.5);
+    image(rules, w/4, h/16, w/2, h/1.5);
 }
