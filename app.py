@@ -37,6 +37,10 @@ def hostJoin():
     
     return render_template('hostJoin.html')
 
+@app.route('/howToPlay')
+def howToPlay():
+    return render_template('howToPlay.html')
+
 @app.route('/hostPlaying')
 def hostPlaying():
     return render_template('hostPlaying.html')
