@@ -44,7 +44,7 @@ function draw() {
   textFont('Helvetica');
   textSize(28);
   textAlign("center", "center");
-  image(logo, w / 2 - 300, h / 16, 600, 200);
+  image(logo, w / 2 - 450, h / 16, 900, 300);
   text("Host a Game", w / 2, h / 2 + 0.5 * btnHeight);
   text("Join a Room", w / 2, h / 2 + 2.5 * btnHeight);
 
