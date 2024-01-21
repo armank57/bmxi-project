@@ -31,7 +31,8 @@ let resourcetilewoodSprite;
 let tradingpostSprite;
 let waterSprite;
 
-
+let highestPlayer = 0;
+let roomNum;
 
 function preload() {
     bridgeSprite = loadImage('static/HostJS/sprites/bridge.png')
@@ -94,21 +95,33 @@ function move(index, x, y) {
     }
 }
 function move_right(index) {
+    if (index+1 > highestPlayer) {
+        highestPlayer = index+1;
+    }
     if (index >= 0 && index < playerCount && players[index].x < mapSize -1 && textures[players[index].y][players[index].x+1] != -1) {
         players[index].x = players[index].x+1;
     }
 }
 function move_left(index) {
+    if (index+1 > highestPlayer) {
+        highestPlayer = index+1;
+    }
     if (index >= 0 && index < playerCount && players[index].x > 0 && textures[players[index].y][players[index].x-1] != -1) {
         players[index].x = players[index].x-1;
     }
 }
 function move_up(index) {
+    if (index+1 > highestPlayer) {
+        highestPlayer = index+1;
+    }
     if (index >= 0 && index < playerCount && players[index].y > 0 && textures[players[index].y-1][players[index].x] != -1) {
         players[index].y = players[index].y-1;
     }
 }
 function move_down(index) {
+    if (index+1 > highestPlayer) {
+        highestPlayer = index+1;
+    }
     if (index >= 0 && index < playerCount && players[index].y < mapSize-1 && textures[players[index].y+1][players[index].x] != -1) {
         players[index].y = players[index].y+1;
     }

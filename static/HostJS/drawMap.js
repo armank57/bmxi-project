@@ -88,7 +88,11 @@ function draw_map(w, h) {
                 }
                 if (col == mapSize-1 && row == mapSize -1) {
                     flag = true;
+                    for(i = 0; i < highestPlayer; i++) {
+                        buildStr(i, roomNum);
+                    }
                 }
+
 
                 
             } else if (currentTime % 5 != 0) {

@@ -62,6 +62,7 @@ function windowResized() {
       console.log(inputStr);
       if (inputStr[0] == 'S') {
         pause = 0;
+        roomNum = int(inputStr[2]);
       }
       boolAddress = 0;
     }
