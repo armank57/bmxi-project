@@ -9,7 +9,6 @@ function draw_map(w, h) {
 
                 if (textures[row][col] == 5 && ownership[row][col] == 0) {
                     players[0].food = players[0].food + 1;
-
                 } else if (textures[row][col] == 5 && ownership[row][col] == 1) {
                     players[1].food = players[1].food + 1;
                     
@@ -104,8 +103,7 @@ function draw_map(w, h) {
             else if (textures[row][col] == 1) { //building 1 (farm)
                 console.log("building");
                 rectMode(CORNER);
-                fill("#CCCC12");
-                stroke("#121212");
+                texture(buildingIMG);
                 rect(w*col/mapSize, h*row/mapSize, w/mapSize, h/mapSize);
                 if (ownership[row][col] == 0) {
                     fill("rgba(200,12,12, 1)");
