@@ -65,7 +65,7 @@ def message_recieved(data):
         return
 
     elif text[0] == 'C':
-        emit('message_from_server', {'text': text}, to=clients[text[1]])
+        emit('message_from_server', {'text': text}, to=clients[int(text[1])])
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)
