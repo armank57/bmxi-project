@@ -10,16 +10,42 @@ let ownership = Array(mapSize).fill(null).map(()=>Array(mapSize).fill(-1));
 let players = Array(playerCount).fill(Player);
 let debugHostSelectedPlayer = 0;
 
-let buildOneCost = 100; //farm
-let buildTwoCost = 200; // lumbermill
-let buildThreeCost = 300; //mine
+let buildOneCost = 12; //farm
+let buildTwoCost = 12; // lumbermill
+let buildThreeCost = 15; //mine
 
-let brigdeCost = 10;
+let brigdeCost = 7;
 let tileCost = 5;
 
 let boolAddress = 1;
 let inputStr = "";
 
+let bridgeSprite;
+let farmSprite;
+let grassSprite;
+let lumbermillSprite;
+let mineSprite;
+let resourcetilefoodSprite;
+let resourcetilestoneSprite;
+let resourcetilewoodSprite;
+let tradingpostSprite;
+let waterSprite;
+
+
+
+function preload() {
+    bridgeSprite = loadImage('static/HostJS/sprites/bridge.png')
+    farmSprite = loadImage('static/HostJS/sprites/farm.png')
+    lumbermillSprite = loadImage('static/HostJS/sprites/lumbermill.png')
+    mineSprite = loadImage('static/HostJS/sprites/mine.png')
+    resourcetilefoodSprite = loadImage('static/HostJS/sprites/resourcetile - food.png')
+    resourcetilestoneSprite = loadImage('static/HostJS/sprites/resourcetile - stone.png')
+    resourcetilewoodSprite = loadImage('static/HostJS/sprites/resourcetile - wood.png')
+    tradingpostSprite = loadImage('static/HostJS/sprites/trading post.png')
+    waterSprite = loadImage('static/HostJS/sprites/water.png')
+    grassSprite = loadImage('static/HostJS/sprites/grass.png')
+
+}
 
 
 
@@ -67,11 +93,11 @@ function Player(index, posX, posY) {
     this.range = 0;
 
     this.money = 4000;
-    this.food = 10;
+    this.food = 30;
 
-    this.wood = 10;
-    this.stone = 10;
-    this.iron = 10;
+    this.wood = 39;
+    this.stone = 30;
+    this.iron = 0;
 }
 function generate_map() {
     //corners
@@ -113,6 +139,7 @@ function generate_map() {
         textures[ms+centerSize][ms+i] = -1;
     }
 
+    //center
     ownership[13][13] = 10
     ownership[12][12] = 10
     ownership[11][11] = 10
