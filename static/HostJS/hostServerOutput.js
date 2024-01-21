@@ -1,4 +1,7 @@
 function buildStr(index, room) {
+    if (index <0 || index > 3) {
+        return;
+    }
     console.log(index);
     outputStr = "C" + index + ""+room;
     outputStr += build_actions(index);
@@ -10,6 +13,7 @@ function buildStr(index, room) {
 
 //lists actions like so [action1, action0,,,,attack0] where 1 means it is available and 0 is not (ie no money)
 function build_actions(index) {
+    
     returnStr = "[";
     x = players[index].x;
     y = players[index].y;
