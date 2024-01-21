@@ -14,7 +14,12 @@ function build_actions(index) {
     x = players[index].x;
     y = players[index].y;
     if (textures[y][x] == -2) { //bridge
-        returnStr += "Claim0,"; //can't claim bridge
+        returnStr += "Claim"; //claim empty
+        if (check_buy_tile(index)) { //check if can buy
+            returnStr += "1,";
+        } else {
+            returnStr += "0,";
+        }
         returnStr += "Make Bridge"; //make bridge
         if (check_buy_bridge(index)) {
             returnStr += "1,";
@@ -221,14 +226,18 @@ function perform_action(index, action) {
     x = players[index].x;
     y = players[index].y;
     if (textures[y][x] == -2) { //bridge
+        if (action == 0 && check_buy_tile(index)) {
+            buy_tile(index);
+            return;
+        }
         if (check_buy_bridge(index)) {
-            if(action == 1) {
+            if(action == 1 && check_buy_bridge(index)) {
                 buy_bridge(index);
                 return;
             }
         }
     } else if (textures[y][x] == 0) { //empty
-        if (action == 0) {
+        if (action == 0 && check_buy_tile(index)) {
             buy_tile(index);
             return;
         }
@@ -239,7 +248,7 @@ function perform_action(index, action) {
             }
         }
     }  else if (textures[y][x] == 1) { //empty
-        if (action == 0) {
+        if (action == 0 && check_buy_tile(index)) {
             buy_tile(index);
             return;
         }
@@ -250,7 +259,7 @@ function perform_action(index, action) {
             }
         }
     }  else if (textures[y][x] == 2) { //empty
-        if (action == 0) {
+        if (action == 0 && check_buy_tile(index)) {
             buy_tile(index);
             return;
         }
@@ -261,7 +270,7 @@ function perform_action(index, action) {
             }
         }
     } else if (textures[y][x] == 3) { //empty
-        if (action == 0) {
+        if (action == 0 && check_buy_tile(index)) {
             buy_tile(index);
             return;
         }
@@ -272,7 +281,7 @@ function perform_action(index, action) {
             }
         }
     } else if (textures[y][x] == 5) { //empty
-        if (action == 0) {
+        if (action == 0 && check_buy_tile(index)) {
             buy_tile(index);
             return;
         }
@@ -289,7 +298,7 @@ function perform_action(index, action) {
             }
         }
     } else if (textures[y][x] == 6) { //empty
-        if (action == 0) {
+        if (action == 0 && check_buy_tile(index)) {
             buy_tile(index);
             return;
         }
@@ -306,7 +315,7 @@ function perform_action(index, action) {
             }
         }
     } else if (textures[y][x] == 7) { //empty
-        if (action == 0) {
+        if (action == 0 && check_buy_tile(index)) {
             buy_tile(index);
             return;
         }
@@ -323,7 +332,7 @@ function perform_action(index, action) {
             }
         }
     } else if (textures[y][x] == 10) { //empty
-        if (action == 0) {
+        if (action == 0 && check_buy_tile(index)) {
             buy_tile(index);
             return;
         }
@@ -334,7 +343,7 @@ function perform_action(index, action) {
             }
         }
     } else if (textures[y][x] == -3) { //empty
-        if (action == 0) {
+        if (action == 0 && check_buy_tile(index)) {
             buy_tile(index);
             return;
         }

@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template
 from flask_socketio import SocketIO
 from flask_cors import CORS
@@ -83,4 +84,5 @@ def message_recieved(data):
         emit('message_from_server', {'text': text}, to=clients[int(text[1])])
 
 if __name__ == '__main__':
-    socketio.run(app, host="0.0.0.0", debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    socketio.run(app, host="0.0.0.0", debug=True, allow_unsafe_werkzeug=True, port=port)

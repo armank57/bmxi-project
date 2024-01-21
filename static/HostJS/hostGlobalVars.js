@@ -67,11 +67,11 @@ function Player(index, posX, posY) {
     this.range = 0;
 
     this.money = 4000;
-    this.food = 0;
+    this.food = 10;
 
-    this.wood = 0;
-    this.stone = 0;
-    this.iron = 0;
+    this.wood = 10;
+    this.stone = 10;
+    this.iron = 10;
 }
 function generate_map() {
     //corners
