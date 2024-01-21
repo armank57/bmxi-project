@@ -89,7 +89,7 @@ function draw_map(w, h) {
                 if (col == mapSize - 1 && row == mapSize - 1) {
                     flag = true
                     for (k = 0; k< 4;k++) {
-                        buildStr(k);
+                        buildStr(k, int(inputStr[2]));
                     }
                 }
             } else if (currentTime % 5 != 0) {

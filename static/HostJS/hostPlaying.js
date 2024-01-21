@@ -4,7 +4,7 @@
 // hostSettings.js
 
 let btnSize;
-let pause = 0;
+let pause = -5;
 let attacking = 0;
 
 function updateContainer() {
@@ -39,7 +39,7 @@ function windowResized() {
     canvas = createCanvas(wa, ha);
     smooth();
     canvas.parent("#sketchContainer");
-    sendData("newH");
+    //sendData("newH");
     receiveData(function (receivedText) {
         console.log(receivedText);
         boolAddress = 1;
@@ -47,8 +47,30 @@ function windowResized() {
   });
   }
 
+  function draw_choice_page() {
+    btnHeight = 30;
+    fill('#FFFFFF');
+    rect(0, 2*btnHeight, w, btnHeight);
+    rect(0, 0, w, btnHeight);
+    fill('#121212');
+    strokeWeight(1);
+    textSize(30);
+    textAlign("center", "center");
+    text("Room 1", w/2, btnHeight/2);
+    text("Room 2", w/2, btnHeight/2 + 2*btnHeight);
+    if (boolAddress != 0) {
+      console.log(inputStr);
+      if (inputStr[0] == 'S') {
+        pause = 0;
+      }
+      boolAddress = 0;
+    }
+}
 
   function draw() {
+    if (pause == -5){
+      draw_choice_page();
+    } else {
     fill('#FFFFFF');
     rect(1, 1, w-2, h-2);
     fill('#121212');
@@ -64,44 +86,45 @@ function windowResized() {
       draw_settings_screen();
     }
     if (boolAddress != 0) {
-        if (inputStr[2] == 'U') {
+        if (inputStr[3] == 'U') {
             move_up(inputStr[1]);
         }
-        else if (inputStr[2] == 'L') {
+        else if (inputStr[3] == 'L') {
             move_left(inputStr[1]);
         }
-        else if (inputStr[2] == 'B') {
+        else if (inputStr[3] == 'B') {
             move_down(inputStr[1]);
         }
-        else if (inputStr[2] == 'R') {
+        else if (inputStr[3] == 'R') {
             move_right(inputStr[1]);
         }
-        else if (inputStr[2] == 'Q') {
+        else if (inputStr[3] == 'Q') {
           move_left(inputStr[1]);
           move_up(inputStr[1]);
         }
-        else if (inputStr[2] == 'E') {
+        else if (inputStr[3] == 'E') {
           move_right(inputStr[1]);
           move_up(inputStr[1]);
         }
-        else if (inputStr[2] == 'Z') {
+        else if (inputStr[3] == 'Z') {
           move_left(inputStr[1]);
           move_down(inputStr[1]);
         }
-        else if (inputStr[2] == 'C') {
+        else if (inputStr[3] == 'C') {
           move_right(inputStr[1]);
           move_down(inputStr[1]);
-        } else if (inputStr[2] == 'P'){
+        } else if (inputStr[3] == 'P'){
           console.log("action");
           perform_action(int(inputStr[1]), int(inputStr[3]));
         }
         if (int(inputStr[1]) >= 0 && int(inputStr[1]) < 4){
-          buildStr(int(inputStr[1])); //send data back for client
+          buildStr(int(inputStr[1]), int(inputStr[2])); //send data back for client
         }
-        if (inputStr[2] == 'Y' && int(inputStr[1]) >= 0 && int(inputStr[1]) < 4 && textures[players[inputStr[1]].y][players[inputStr[1]].x] == -3) {
+        if (inputStr[3] == 'Y' && int(inputStr[1]) >= 0 && int(inputStr[1]) < 4 && textures[players[inputStr[1]].y][players[inputStr[1]].x] == -3) {
           sell_stuff(inputStr[1]);
         }
         boolAddress = 0;
+    }
     }
   }
 
@@ -122,7 +145,18 @@ function windowResized() {
   }
 
   function mouseClicked() {
-    if (pause == 1){
+    if (pause == -5) {
+      btnHeight = 30;
+      if (mouseX > 0 && mouseX < w && mouseY > 0 && mouseY < btnHeight) {
+        sendData("newH?0");
+        console.log("0");
+      }
+      if (mouseX > 0 && mouseX < w && mouseY > 2*btnHeight && mouseY < 3*btnHeight) {
+        sendData("newH?1");
+        console.log("1");
+      }
+    }
+    else if (pause == 1){
       if (mouseX > w/6 - w/8 && mouseX < w/6 + w/8 && mouseY > h/2 - h/10 && mouseY < h/2 + h/10) {
         pause = 0;
         move(0, 8, 8);

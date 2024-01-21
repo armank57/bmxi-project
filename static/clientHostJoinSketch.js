@@ -55,9 +55,10 @@ function windowResized() {
   function mouseClicked() {
     btnHeight = 30;
     if (mouseX > 0 && mouseX < w && mouseY > 0 && mouseY < btnHeight) {
-        sendData("newH?")
+      window.location = "/hostPlaying"
+        //sendData("newH?")
     }
     if (mouseX > 0 && mouseX < w && mouseY > 2*btnHeight && mouseY < 3*btnHeight) {
-        sendData("newP?")
+        window.location = "/clientPlaying"//sendData("newP?")
     }
   }
