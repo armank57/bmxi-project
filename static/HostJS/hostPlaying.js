@@ -101,9 +101,12 @@ function windowResized() {
       } else if (keyCode == 52 && pause != 1) {
         target = 3;
       } else {
+        attacking = 0;
         return;
       }
       checkDistance(debugHostSelectedPlayer, target);
+      attacking = 0;
+      return;
     }
     if (keyCode == 27 && pause != 1) {
       pause = 1;
