@@ -4,6 +4,9 @@ let infop = ["info","for","player"];
 let playerID = 0;
 let serverMessage = "This is a Test Server Message";
 
+let boolAddress = 1;
+let inputStr = "";
+
 function display_menu(w, h) {
     get_client_info(); //updates btns and info
     if (w > h) {
@@ -30,10 +33,46 @@ function display_actionsw(w, h) {
     fill("#FFFFFF");
     textSize(30);
     for(i = 3; i < 14; i+=2) {
-        rect(w/5, h*i/16, w/5, h/9, w/70);
-        fill("#000000");
-        text(btns[(i-3)/2], w/5, h*i/16);
-        fill("#FFFFFF");
+        if (i != 13) {
+            if (btns[(i-3)/2][btns[(i-3)/2].length-1] == '0' || btns[(i-3)/2][btns[(i-3)/2].length-1] == ' ') {
+                fill("#BBBBBB");
+            } else {
+                fill("#FFFFFF");
+            }
+            rect(w/5, h*i/16, w/5, h/9, w/70);
+            fill("#000000");
+            text(btns[(i-3)/2].substring(0, btns[(i-3)/2].length-1), w/5, h*i/16);
+            fill("#FFFFFF");
+        } else {
+            offsetColors = 0;
+            for (j = 0; j<4;j++) {
+                if (j == playerID) {
+                    continue;
+                } else {
+                    if (btns[(i-3)/2][offsetColors] == '1') {
+                        if (j == 0) {
+                            fill("rgba(200,12,12, 1)");
+                        }
+                        else if (j == 1) {
+                            fill("rgba(12,100,12,1)");
+                        }
+                        else if (j == 2) {
+                            fill("rgba(200,12,200,1)");
+                        }
+                        else if (j == 3) {
+                            fill("rgba(12,12,200,1)");
+                        }
+                        rect(w/5- w/15 + (offsetColors *w/15), h*i/16, w/16, h/9, w/70);
+                    } else {
+                        fill("rgba(12,12,12,0.5)");
+                        rect(w/5- w/15 + (offsetColors *w/15), h*i/16, w/16, h/9, w/70);
+                    }
+
+                    offsetColors += 1;
+                }
+            }
+            fill("#FFFFFF");
+        }
     }
 }
 

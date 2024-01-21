@@ -12,6 +12,51 @@ function calculateDistance(a, b) {
 
 
 /*
+ * @brief Checks if the player is able to attack the target
+ *
+ * @param player The player that is attacking
+ * @param target The player that could be attacked
+ * 
+ * @return True if the player is able to attack the target, False otherwise
+ */ 
+function checkAttack(player, target) {
+    if (player == target) { // player is attacking themselves
+        return false;
+    }
+
+    p1position = [players[0].x, players[0].y];
+    p2position = [players[1].x, players[1].y];
+    p3position = [players[2].x, players[2].y];
+    p4position = [players[3].x, players[3].y];
+
+    p1range = players[0].range;
+    p2range = players[1].range;
+    p3range = players[2].range;
+    p4range = players[3].range;
+
+    positions = [p1position, p2position, p3position, p4position];
+    ranges = [p1range, p2range, p3range, p4range];
+
+    switch(calculateDistance(positions[player], positions[target])) {
+        case 0: // player and target are on the same tile
+            return true;
+        case 1: // player and target are 1 tile away
+            if (ranges[player] == 0) {
+                return false;
+            }
+            return true;
+        case 2: // player and target are 2 tiles away
+            if (ranges[player] == 0 || ranges[player] == 1) {
+                return false;
+            }
+            return true;
+        default: // the player is too far away
+            return false;
+    }
+
+}
+
+/*
  * @brief Checks if the player is close enough to attack the target and then attacks
  *
  * @param player The player that is attacking
@@ -19,7 +64,7 @@ function calculateDistance(a, b) {
  * 
  * @return True if the player is close enough to attack the target and attack is successful, False otherwise
  */ 
-function checkDistance(player, target) {
+function attack(player, target) {
     if (player == target) { // player is attacking themselves
         return false;
     }

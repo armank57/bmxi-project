@@ -16,6 +16,9 @@ let buildThreeCost = 300; //mine
 let brigdeCost = 10;
 let tileCost = 5;
 
+let boolAddress = 1;
+let inputStr = "";
+
 function time() {
     
 }

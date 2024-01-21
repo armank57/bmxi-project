@@ -39,8 +39,11 @@ function windowResized() {
     canvas = createCanvas(wa, ha);
     smooth();
     canvas.parent("#sketchContainer");
+    sendData("newH");
     receiveData(function (receivedText) {
         console.log(receivedText);
+        boolAddress = 1;
+        inputStr = receivedText;
   });
   }
 
@@ -59,6 +62,40 @@ function windowResized() {
       pauseScreen();
     } else {
       draw_settings_screen();
+    }
+    if (boolAddress != 0) {
+        if (inputStr[2] == 'U') {
+            move_up(inputStr[1]);
+        }
+        else if (inputStr[2] == 'L') {
+            move_left(inputStr[1]);
+        }
+        else if (inputStr[2] == 'B') {
+            move_down(inputStr[1]);
+        }
+        else if (inputStr[2] == 'R') {
+            move_right(inputStr[1]);
+        }
+        else if (inputStr[2] == 'Q') {
+          move_left(inputStr[1]);
+          move_up(inputStr[1]);
+        }
+        else if (inputStr[2] == 'E') {
+          move_right(inputStr[1]);
+          move_up(inputStr[1]);
+        }
+        else if (inputStr[2] == 'Z') {
+          move_left(inputStr[1]);
+          move_down(inputStr[1]);
+        }
+        else if (inputStr[2] == 'C') {
+          move_right(inputStr[1]);
+          move_down(inputStr[1]);
+        }
+        if (int(inputStr[1]) >= 0 && int(inputStr[1]) < 4){
+          buildStr(int(inputStr[1])); //send data back for client
+        }
+        boolAddress = 0;
     }
   }
 
@@ -107,7 +144,7 @@ function windowResized() {
         attacking = 0;
         return;
       }
-      checkDistance(debugHostSelectedPlayer, target);
+      attack(debugHostSelectedPlayer, target);
       attacking = 0;
       return;
     }

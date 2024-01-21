@@ -22,7 +22,9 @@ def clientLoading():
     return render_template('clientLoading.html')
 
 @app.route('/clientPlaying')
-def clientPlaying():    
+def clientPlaying():
+    if len(clients) >= 4:
+        return render_template('clientHostJoin.html')
     return render_template('clientPlaying.html')
 
 @app.route('/hostJoin')
@@ -30,15 +32,12 @@ def hostJoin():
     return render_template('hostJoin.html')
 
 @app.route('/hostPlaying')
-def hostPlaying():    
-    return render_template('hostPlaying.html')
-
-@socketio.on('connect')
-def connect():
+def hostPlaying():
     global host
     if host == "":
-        host = request.sid
-        print(host)
+        return render_template('hostPlaying.html')
+    else:
+        return render_template('clientHostJoin.html')
 
 @socketio.on('disconnect')
 def disconnect():
@@ -54,18 +53,13 @@ def message_recieved(data):
     if text == "newP":
         sid = request.sid
         clients.append(sid)
-        player_num = client.index(sid)
+        player_num = clients.index(sid)
         if player_num <= 3:
-            emit('message_from_server', {'text': player_num}, to=sid)
-        else:
-            emit('message_from_server', {'text': "E"}, to=sid)
+            emit('message_from_server', {'text': "@" + str(player_num)}, to=sid)
         return
     elif text == "newH":
         if host == "":
             host = request.sid
-            emit('message_from_server', {'text': "S"}, to=host)
-        else:
-            emit('message_from_server', {'text': "E"}, to=host)
         return
 
     if text[0] == 'H':

@@ -99,6 +99,33 @@ function buy_tile(index) {
 
 }
 
+function check_buy_tile(index) {
+    adjacent = 0;
+    x = players[index].x;
+    y = players[index].y;
+    
+    if (x < mapSize - 1 && ownership[y][x+1] == index) {
+        adjacent = 1;
+    }
+    if (x > 0 && ownership[y][x-1] == index) {
+        adjacent += 1;
+    }
+    if (y < mapSize - 1 && ownership[y+1][x] == index) {
+        adjacent += 1;
+    }
+    if (y > 0 && ownership[y-1][x] == index) {
+        adjacent += 1;
+    }
+
+    if (adjacent >= 1) {
+        if (textures[y][x] == -2) {
+            return false
+        }
+        return true;
+    }
+    return false;
+}
+
 function buy_bridge(index) {
     found = 0;
     x = players[index].x;
@@ -167,6 +194,55 @@ function buy_bridge(index) {
                 textures[y+1][x] = -2;
             }
 
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    return false;
+}
+
+function check_buy_bridge(index) {
+    found = 0;
+    x = players[index].x;
+    y = players[index].y;
+    if (x < mapSize - 1 && textures[y][x+1] == -1) {
+        found = 1;
+    }
+    if (x > 0 && textures[y][x-1] == -1) {
+        found += 1;
+    }
+    if (y < mapSize - 1 && textures[y+1][x] == -1) {
+        found += 1;
+    }
+    if (y > 0 && textures[y-1][x] == -1) {
+        found += 1;
+    }
+    if (found == 1) {
+        if (index >= 0 && index < playerCount && players[index].money >= brigdeCost) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //check for one land
+    found = 0;
+    if (x < mapSize - 1 && textures[y][x+1] >= 0) {
+        found = 1;
+    }
+    if (x > 0 && textures[y][x-1] >= 0) {
+        found += 1;
+    }
+    if (y < mapSize - 1 && textures[y+1][x] >= 0) {
+        found += 1;
+    }
+    if (y > 0 && textures[y-1][x] >= 0) {
+        found += 1;
+    }
+    if (found == 1) {
+        if (index >= 0 && index < playerCount && players[index].money >= brigdeCost) {
             return true;
         } else {
             return false;
