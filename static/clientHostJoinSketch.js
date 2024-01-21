@@ -35,15 +35,15 @@ function setup() {
 function draw() {
   btnHeight = 30;
   fill('#FFFFFF');
-  rect(0, 2 * btnHeight, w, btnHeight);
-  rect(0, 0, w, btnHeight);
+  rect(0, h / 2 + 2*btnHeight, w, btnHeight);
+  rect(0, h / 2, w, btnHeight);
   fill('#121212');
   strokeWeight(1);
   textSize(30);
   textAlign("center", "center");
-  image(logo, w / 2 - 300, h / 4, 600, 200);
-  text("Host a Game", w / 2, btnHeight / 2);
-  text("Join a Room", w / 2, btnHeight / 2 + 2 * btnHeight);
+  image(logo, w / 2 - 300, h / 16, 600, 200);
+  text("Host a Game", w / 2, h / 2);
+  text("Join a Room", w / 2, h / 2 + 2 * btnHeight);
 
   if (boolAddress != 0) {
     if (inputStr == 'SH') {

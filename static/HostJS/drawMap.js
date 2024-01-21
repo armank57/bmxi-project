@@ -248,7 +248,7 @@ function draw_map(w, h) {
                 rect(w*col/mapSize, h*row/mapSize, w/mapSize, h/mapSize);
             }
             else if (ownership[row][col] == 1) {
-                fill("rgba(12,100,12,0.5)");
+                fill("rgba(100,10,100,0.5)");
                 noStroke();
                 rect(w*col/mapSize, h*row/mapSize, w/mapSize, h/mapSize);
             }
@@ -276,7 +276,7 @@ function draw_map(w, h) {
     strokeWeight(3);
     stroke("rgba(200,12,12, 1)");
     rect(w * players[0].x/mapSize, h * players[0].y/mapSize, w/mapSize, h/mapSize);
-    stroke("rgba(12,100,12,1)");
+    stroke("rgba(100,10,100,1)");
     rect(w * players[1].x/mapSize, h * players[1].y/mapSize, w/mapSize, h/mapSize);
     stroke("rgba(200,12,200,1)");
     rect(w * players[2].x/mapSize, h * players[2].y/mapSize, w/mapSize, h/mapSize);
@@ -285,7 +285,7 @@ function draw_map(w, h) {
     strokeWeight(3);
     stroke("rgba(200,12,12,0.65)");
     rect(w * players[0].x/mapSize, h * players[0].y/mapSize, w/mapSize, h/mapSize);
-    stroke("rgba(12,100,12,0.65)");
+    stroke("rgba(100,10,100,0.65)");
     rect(w * players[1].x/mapSize, h * players[1].y/mapSize, w/mapSize, h/mapSize);
     stroke("rgba(200,12,200,0.65)");
     rect(w * players[2].x/mapSize, h * players[2].y/mapSize, w/mapSize, h/mapSize);
@@ -294,16 +294,16 @@ function draw_map(w, h) {
     strokeWeight(7);
     stroke("rgba(200,12,12,0.5)");
     rect(w * players[0].x/mapSize, h * players[0].y/mapSize, w/mapSize, h/mapSize);
-    stroke("rgba(12,100,12,0.5)");
+    stroke("rgba(100,10,100,0.5)");
     rect(w * players[1].x/mapSize, h * players[1].y/mapSize, w/mapSize, h/mapSize);
     stroke("rgba(200,12,200,0.5)");
     rect(w * players[2].x/mapSize, h * players[2].y/mapSize, w/mapSize, h/mapSize);
     stroke("rgba(12,12,200,0.5)");
     rect(w * players[3].x/mapSize, h * players[3].y/mapSize, w/mapSize, h/mapSize);
     strokeWeight(10);
-    stroke("rgba(200,12,12,0.25)");
+    stroke("rgba(200,12,100,0.25)");
     rect(w * players[0].x/mapSize, h * players[0].y/mapSize, w/mapSize, h/mapSize);
-    stroke("rgba(12,100,12,0.25)");
+    stroke("rgba(100,10,100,0.25)");
     rect(w * players[1].x/mapSize, h * players[1].y/mapSize, w/mapSize, h/mapSize);
     stroke("rgba(200,12,200,0.25)");
     rect(w * players[2].x/mapSize, h * players[2].y/mapSize, w/mapSize, h/mapSize);
