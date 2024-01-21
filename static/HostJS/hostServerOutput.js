@@ -173,8 +173,30 @@ function build_actions(index) {
         }
         returnStr += "Upgrade0,";
     }
-    returnStr += "Range Upgrade0,Fight Upgrade0,";
-    returnStr += "000]"; //implement attack later each is different color
+    returnStr += "Range Upgrade";
+    if (check_buyRange(index)) {
+        returnStr += "1,";
+    } else {
+        returnStr += "0,";
+    }
+    returnStr += "Fight Upgrade";
+    if (check_buyTroops(index)) {
+        returnStr += "1,";
+    } else {
+        returnStr += "0,";
+    }
+    offsetColor = 0;
+    for(i = 0; i < 4; i++) {
+        if (i == index) {
+            continue;
+        }
+        if (checkAttack(index, i)) {
+            returnStr += "1";
+        } else {
+            returnStr += "0";
+        }
+    }
+    returnStr += "]"; //implement attack later each is different color
     return returnStr;
 }
 //formatted [,,]
@@ -216,8 +238,7 @@ function build_player(index) {
     returnStr += "Money: " + players[index].money;
     returnStr += " Food: " + players[index].food + ",";
     returnStr += "Wood: " + players[index].wood;
-    returnStr += " Stone: " + players[index].stone;
-    returnStr += " Iron: " + players[index].iron + "]";
+    returnStr += " Stone: " + players[index].stone + "]";
     return returnStr;
 }
 
@@ -352,6 +373,39 @@ function perform_action(index, action) {
                 buy_bridge(index);
                 return;
             }
+        }
+    }
+    if (action == 3 && check_buyRange(index)) {
+        buyRange(index);
+        return;
+    }
+    if (action == 4 && check_buyTroops(index)) {
+        buyTroops(index);
+        return;
+    }
+    if (action == 5) {
+        other = 0;
+        if (index == 0) {
+            other += 1;
+        }
+        if (checkAttack(index, other)) {
+            attack(index, other);
+        }
+    } else if (action == 6) {
+        other = 1;
+        if (index <= 1) {
+            other += 1;
+        }
+        if (checkAttack(index, other)) {
+            attack(index, other);
+        }
+    } else if (action == 7) {
+        other = 2;
+        if (index <= 2) {
+            other += 1;
+        }
+        if (checkAttack(index, other)) {
+            attack(index, other);
         }
     }
 }

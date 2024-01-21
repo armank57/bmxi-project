@@ -15,12 +15,14 @@ function buyRange(index) {
         players[index].range = 1
         players[index].stone = players[index].stone - 10
         players[index].money = players[index].money - 10
-    } 
-    if (players[index].iron >= 10 && players[index].money >= 15) {
-        players[index].range = 2
-        players[index].stone = players[index].iron - 10
-        players[index].money = players[index].money - 15
-    } 
+    }
+}
+
+function check_buyRange(index) {
+    if (players[index].stone >= 10 && players[index].money >= 10) {
+        return true;
+    }
+    return false;
 }
 
 function buyTroops(index) {
@@ -39,6 +41,18 @@ function buyTroops(index) {
         players[index].food = players[index].food - 3
         players[index].money = players[index].money - 3
     } 
+}
+function check_buyTroops(index) {
+    if (players[index].food >= 3 && players[index].money >= 3 && players[index].range == 2) {
+        return true;
+    } 
+    if (players[index].food >= 3 && players[index].money >= 3 && players[index].range == 1) {
+        return true;
+    } 
+    if (players[index].food >= 3 && players[index].money >= 3) {
+        return true;
+    } 
+    return false;
 }
 
 
@@ -123,8 +137,8 @@ function attack(player, target) {
     p3range = players[2].range;
     p4range = players[3].range;
 
-    startX = [int(mapSize / 2), 1, int(mapSize / 2), mapSize - 2];
-    startY = [1, int(mapSize / 2), mapSize - 2, int(mapSize / 2)];
+    startX = [3, 3, mapSize-4, mapSize-4];
+    startY = [3, mapSize-4, 3, mapSize-4];
 
     fightingPowers = [p1fp, p2fp, p3fp, p4fp];
     positions = [p1position, p2position, p3position, p4position];

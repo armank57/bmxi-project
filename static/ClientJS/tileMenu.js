@@ -165,10 +165,16 @@ function display_ID(w, h) {
 
 function tile_display_buttons() {
     for(i = 3; i < 14; i+=2) {
-        if (mouseX > w/5- w/10 && mouseX < w/5 + w/10 && mouseY > h*i/16 - h/18 && mouseY < h*i/16 + h/18) {
+        if (i != 13 && mouseX > w/5- w/10 && mouseX < w/5 + w/10 && mouseY > h*i/16 - h/18 && mouseY < h*i/16 + h/18) {
             //ith button clicked
             console.log((i-3)/2);
             sendData("H" + playerID + "P" + (i-3)/2); //sends button selected to host
+        } else if (i == 13) {
+            for (j =0; j < 3; j++) {
+                if ( mouseX > w/5- w/15 + (j*w/15) - w/32 && mouseX < w/5- w/15 + (j*w/15) + w/32 && mouseY > h*i/16 - h/18 && mouseY < h*i/16 + h/18) {
+                    sendData("H" + playerID + "P" + (i-3)/2+j);
+                }
+            }
         }
     }
 
