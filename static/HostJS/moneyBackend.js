@@ -303,6 +303,6 @@ function sell_stuff(index) {
     players[index].wood = 0;
     players[index].stone = 0;
     if (int(inputStr[1]) >= 0 && int(inputStr[1]) < 4){
-        buildStr(int(inputStr[1])); //send data back for client
+        buildStr(int(inputStr[1]), int(inputStr[2])); //send data back for client
     }
 }

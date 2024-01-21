@@ -2,7 +2,7 @@ var socket;
 
 // The http vs. https is important. Use http for localhost!
 $(document).ready(function () {
-    socket = io("https://siege-bmxi-e694d2207037.herokuapp.com/", {
+    socket = io("localhost:5000", {
         transports: ["websocket"],
         cors: {
             origin: "localhost1:3000",

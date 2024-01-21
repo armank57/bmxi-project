@@ -1,4 +1,4 @@
-let selectionMode = 1;
+let selectionMode = -5;
 let moveBtnSize;
 let btnRadius;
 let btnDist;
@@ -34,7 +34,6 @@ function windowResized() {
     canvas = createCanvas(w, h);
     smooth();
     canvas.parent("#sketchContainer");
-    sendData("newP")
     receiveData(function (receivedText) {
         console.log(receivedText);
         boolAddress = 1;
@@ -42,8 +41,32 @@ function windowResized() {
     });
   }
 
+  function draw_choice_page() {
+    btnHeight = 30;
+    fill('#FFFFFF');
+    rect(0, 2*btnHeight, w, btnHeight);
+    rect(0, 0, w, btnHeight);
+    fill('#121212');
+    strokeWeight(1);
+    textSize(30);
+    textAlign("center", "center");
+    text("Room 1", w/2, btnHeight/2);
+    text("Room 2", w/2, btnHeight/2 + 2*btnHeight);
+    if (boolAddress != 0) {
+      if (inputStr[0] == '@') {
+        playerID = inputStr[1];
+        roomNum = inputStr[2];
+        selectionMode = 1;
+      }
+      boolAddress = 1;
+    }
+}
+
   function draw() {
-    if (selectionMode == 1) {
+    if (selectionMode == -5) {
+      draw_choice_page();
+    }
+    else if (selectionMode == 1) {
         textSize(30);
         rectMode(CORNER);
         fill("#555555");
@@ -134,10 +157,8 @@ function windowResized() {
     }
 
     if (boolAddress != 0) {
-        if (inputStr[0] == '@') {
-            playerID = inputStr[1];
-        }
-        if (inputStr.length > 3 && inputStr[2] == '[') { //data packet
+        
+        if (inputStr.length > 3 && inputStr[3] == '[') { //data packet
           inputStr = inputStr.substring(3);
           for (i = 0; i < 6; i++) { //get actions
             if (i != 5) { //don't cut last one
@@ -202,63 +223,72 @@ function windowResized() {
   }
 
   function mouseClicked() {
-    if (selectionMode == 1) {
+    if (selectionMode == -5) {
+      btnHeight = 30;
+    if (mouseX > 0 && mouseX < w && mouseY > 0 && mouseY < btnHeight) {
+      sendData("newP?0");
+    }
+    if (mouseX > 0 && mouseX < w && mouseY > 2*btnHeight && mouseY < 3*btnHeight) {
+      sendData("newP?1");
+    }
+      
+    } else if (selectionMode == 1) {
       halfBtn = moveBtnSize/2;
       tile_display_buttons();
         if (mouseX > w/2 - btnSpace && mouseX < w/2 + btnSpace 
                 && mouseY > h/2 - btnSpace && mouseY < h/2 + btnSpace) {
             //center button
             console.log("Center");
-            sendData("H" + playerID + "Y");
+            sendData("H" + playerID + "" + roomNum  + "Y");
             //selectionMode = test_action();
         }
         if (mouseX > w/2 - btnSpace + btnDist && mouseX < w/2 + btnSpace + btnDist 
                 && mouseY > h/2 - btnSpace && mouseY < h/2 + btnSpace) {
             //right button
             console.log("Right");
-            sendData("H" + playerID + "R");
+            sendData("H" + playerID + "" + roomNum  + "R");
         }
         if (mouseX > w/2 - btnSpace - btnDist && mouseX < w/2 + btnSpace - btnDist 
                 && mouseY > h/2 - btnSpace && mouseY < h/2 + btnSpace) {
             //left button
             console.log("Left");
-            sendData("H" + playerID + "L");
+            sendData("H" + playerID + "" + roomNum  + "L");
         }
         if (mouseX > w/2 - btnSpace && mouseX < w/2 + btnSpace 
                 && mouseY > h/2 - btnSpace - btnDist && mouseY < h/2 + btnSpace - btnDist) {
             //top button
             console.log("Top");
-            sendData("H" + playerID + "U");
+            sendData("H" + playerID + "" + roomNum  + "U");
         }
         if (mouseX > w/2 - btnSpace && mouseX < w/2 + btnSpace 
                 && mouseY > h/2 - btnSpace + btnDist && mouseY < h/2 + btnSpace + btnDist) {
             //bottom button
             console.log("Bottom");
-            sendData("H" + playerID + "B");
+            sendData("H" + playerID + "" + roomNum  + "B");
         }
         if (mouseX > w/2 - btnSpace - btnDist && mouseX < w/2 + btnSpace - btnDist 
                 && mouseY > h/2 - btnSpace - btnDist && mouseY < h/2 + btnSpace - btnDist) {
             //top left button
             console.log("Top left");
-            sendData("H" + playerID + "Q");
+            sendData("H" + playerID + "" + roomNum  + "Q");
         }
         if (mouseX > w/2 - btnSpace + btnDist && mouseX < w/2 + btnSpace + btnDist 
                 && mouseY > h/2 - btnSpace - btnDist && mouseY < h/2 + btnSpace - btnDist) {
             //top right button
             console.log("Top right");
-            sendData("H" + playerID + "E");
+            sendData("H" + playerID + "" + roomNum  + "E");
         }
         if (mouseX > w/2 - btnSpace + btnDist && mouseX < w/2 + btnSpace + btnDist 
                 && mouseY > h/2 - btnSpace + btnDist && mouseY < h/2 + btnSpace + btnDist) {
             //bottom right button
             console.log("Bottom right");
-            sendData("H" + playerID + "C");
+            sendData("H" + playerID + "" + roomNum  + "C");
         }
         if (mouseX > w/2 - btnSpace - btnDist && mouseX < w/2 + btnSpace - btnDist 
                 && mouseY > h/2 - btnSpace + btnDist && mouseY < h/2 + btnSpace + btnDist) {
             //bottom left button
             console.log("Bottom left");
-            sendData("H" + playerID + "Z");
+            sendData("H" + playerID + "" + roomNum  + "Z");
         }
     } else if (selectionMode == -1) {
       if (mouseX > w/6 - w/8 && mouseX < w/6 + w/8 && mouseY > h/2 - h/10 && mouseY < h/2 + h/10) {

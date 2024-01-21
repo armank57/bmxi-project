@@ -127,7 +127,6 @@ function Player(index, posX, posY) {
 
     this.wood = 5;
     this.stone = 5;
-    this.iron = 0;
 
     this.vp = 1
 }
