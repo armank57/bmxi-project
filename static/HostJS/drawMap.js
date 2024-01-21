@@ -86,9 +86,9 @@ function draw_map(w, h) {
                     players[3].stone = players[3].stone + 2;
                 }
 
-
-
-                flag = true
+                if (col == mapSize - 1 && row == mapSize - 1) {
+                    flag = true
+                }
             } else if (currentTime % 5 != 0) {
                 flag = false;
             }
