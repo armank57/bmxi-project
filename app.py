@@ -30,15 +30,12 @@ def hostJoin():
     return render_template('hostJoin.html')
 
 @app.route('/hostPlaying')
-def hostPlaying():    
-    return render_template('hostPlaying.html')
-
-@socketio.on('connect')
-def connect():
+def hostPlaying():
     global host
     if host == "":
-        host = request.sid
-        print(host)
+        return render_template('hostPlaying.html')
+    else:
+        return render_template('clientHostJoin.html')
 
 @socketio.on('disconnect')
 def disconnect():
@@ -63,9 +60,6 @@ def message_recieved(data):
     elif text == "newH":
         if host == "":
             host = request.sid
-            emit('message_from_server', {'text': "S"}, to=host)
-        else:
-            emit('message_from_server', {'text': "E"}, to=host)
         return
 
     if text[0] == 'H':

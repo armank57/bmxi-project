@@ -39,6 +39,7 @@ function windowResized() {
     canvas = createCanvas(wa, ha);
     smooth();
     canvas.parent("#sketchContainer");
+    sendData("newH");
     receiveData(function (receivedText) {
         console.log(receivedText);
         boolAddress = 1;
