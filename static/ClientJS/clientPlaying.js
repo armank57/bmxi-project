@@ -70,7 +70,7 @@ function windowResized() {
         textSize(30);
         rectMode(CORNER);
         fill("#555555");
-        rect(1, 1, w-2, h-2);
+        rect(0, 0, w, h);
         //Arrows drawing
         rectMode(CENTER);
         fill("#FFFFFF");
