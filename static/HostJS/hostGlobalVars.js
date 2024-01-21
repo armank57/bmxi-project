@@ -19,10 +19,10 @@ let boolAddress = 1;
 let inputStr = "";
 
 function init() {
-    players[0] = new Player(0, int(mapSize/2), 1);
-    players[1] = new Player(1, 1, int(mapSize/2));
-    players[2] = new Player(2, int(mapSize/2), mapSize-2);
-    players[3] = new Player(3, mapSize-2, int(mapSize/2));
+    players[0] = new Player(0, 3, 3);
+    players[1] = new Player(1, 3, int(mapSize-4));
+    players[2] = new Player(2, int(mapSize-4), 3);
+    players[3] = new Player(3, int(mapSize-4),  int(mapSize-4));
     generate_map();
 }
 
@@ -73,6 +73,11 @@ function Player(index, posX, posY) {
 }
 function generate_map() {
     //corners
+    textures[0][0] = -3
+    textures[mapSize-1][0] = -3
+    textures[0][mapSize-1] = -3
+    textures[mapSize-1][mapSize-1] =-3
+
     for (let i = 0; i < islandSize+1; i++) {
         textures[mapSize-1-i][islandSize] = -1;
         textures[mapSize-1-i][mapSize-1-islandSize] = -1;
@@ -107,10 +112,10 @@ function generate_map() {
 
     //testing stuff for matthew
 
-    ownership[1][int(mapSize/2)] = 0
-    ownership[int(mapSize/2)][1] = 1
-    ownership[mapSize-2][int(mapSize/2)] = 2
-    ownership[int(mapSize/2)][mapSize-2] = 3
+    ownership[3][3] = 0
+    ownership[mapSize-4][3] = 1
+    ownership[3][mapSize-4] = 2
+    ownership[mapSize-4][mapSize-4] = 3
     
 
 }
