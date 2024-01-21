@@ -7,10 +7,10 @@ function draw_money(w, h, offsetw, offseth) {
         strokeWeight(1);
         stroke("#000000");
         fill("#000000");
-        text("Red Player: $" + players[0].money, w + offsetw/2, h/5);
-        text("Green Player: $" + players[1].money, w + offsetw/2, h*2/5);
-        text("Pink Player: $" + players[2].money, w + offsetw/2, h*3/5);
-        text("Blue Player: $" + players[3].money, w + offsetw/2, h*4/5);
+        text("Red Player: $" + players[0].money + "VP" + players[0].vp, w + offsetw/2, h/5);
+        text("Green Player: $" + players[1].money + "VP" + players[1].vp, w + offsetw/2, h*2/5);
+        text("Pink Player: $" + players[2].money + "VP" + players[2].vp, w + offsetw/2, h*3/5);
+        text("Blue Player: $" + players[3].money + "VP" + players[3].vp, w + offsetw/2, h*4/5);
     } else {
         rectMode(CENTER);
         strokeWeight(1);

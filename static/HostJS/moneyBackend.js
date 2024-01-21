@@ -13,6 +13,7 @@ function buy_building_one(index) { //farm
             players[index].money = players[index].money - buildOneCost;
             textures[players[index].y][players[index].x] = 1;
         }
+        victoryPoints(index);
         return true;
     } else {
         return false;
@@ -47,6 +48,7 @@ function buy_building_two(index) { //mine
             players[index].money = players[index].money - buildThreeCost;
             textures[players[index].y][players[index].x] = 2;
         }
+        victoryPoints(index);
         return true;
     } else {
         return false;
@@ -80,6 +82,7 @@ function buy_building_three(index) { //lumbermill
             players[index].money = players[index].money - buildTwoCost;
             textures[players[index].y][players[index].x] = 3;
         }
+        victoryPoints(index);
         return true;
     } else {
         return false;
@@ -166,6 +169,7 @@ function check_buy_tile(index) {
     }
 
     if ((adjacent >= 1 || (textures[y][x] >= 5 && textures[y][x] <= 7)) && players[index].money >= 10 ) {
+        victoryPoints(index);
         return true;
     }
     return false;
@@ -202,7 +206,7 @@ function buy_bridge(index) {
             else if (y > 0 && textures[y-1][x] == -1) {
                 textures[y-1][x] = -2;
             }
-
+            victoryPoints(index);
             return true;
         } else {
             return false;
