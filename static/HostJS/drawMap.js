@@ -79,6 +79,14 @@ function draw_map(w, h) {
                 fill("#FFFFFF");
                 stroke("#000000");
             }
+            else if (textures[row][col] == -3) { //trading post
+                rectMode(CORNER);
+                fill("#8b4513");
+                noStroke();
+                rect(w*col/mapSize, h*row/mapSize, w/mapSize, h/mapSize);
+                fill("#FFFFFF");
+                stroke("#000000");
+            }
 
             if (ownership[row][col] == 0) {
                 fill("rgba(200,12,12, 0.5)");
